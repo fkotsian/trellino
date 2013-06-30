@@ -1,0 +1,33 @@
+- Boards
+	Boards have titles
+
+- Members for each board
+	Each member has a name, a profile photo, and authentication.
+
+- A board can be made public or private, but only members can edit a board.
+
+- Lists for each board
+	Title
+	List position within Board
+
+- Cards on each list
+	Cards can be dragged from one list and dropped to another.
+
+- Cards can be clicked on to show details and get edited, or simple actions can be made from the board view via a card action menu.
+
+- Card details include:
+	Single title
+	Single card description
+	Card position within list
+	Member assignments
+	File attachments (picture attachments can be chosen as cover photos)
+	Checklists (summarized in a progress bar)
+	Votes (one per member)
+	Due dates
+	Color-coded labels that can be named
+	Activity tracking
+
+- Side bar with board activity and tools to manage membership.
+
+- Single search bar to search within boards and cards simultaneously.
+
