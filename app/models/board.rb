@@ -6,4 +6,9 @@ class Board < ActiveRecord::Base
   has_many :board_assignments
   has_many :members, through: :board_assignments, source: :user
   has_many :lists
+  
+  
+  def as_json(options={})
+    super(options.merge({include: :lists}))
+  end
 end

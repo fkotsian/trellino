@@ -6,4 +6,8 @@ class List < ActiveRecord::Base
   
   belongs_to :board
   has_many :cards
+  
+  def as_json(options={})
+    super(options.merge({include: :cards}))
+  end
 end
