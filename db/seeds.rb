@@ -6,6 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+users = User.create([
+  {email: 'simis1000@gmail.com', password: 123}
+])
+
+board_assignments = BoardAssignment.create([
+  {user_id: 1, board_id: 1},
+  {user_id: 1, board_id: 2}
+])
+
 boards = Board.create([
   {title: "Home"}, #1
   {title: "Work"} #2

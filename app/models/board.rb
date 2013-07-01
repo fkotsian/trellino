@@ -3,5 +3,7 @@ class Board < ActiveRecord::Base
   
   validates :title, presence: true
   
+  has_many :board_assignments
+  has_many :members, through: :board_assignments, source: :user
   has_many :lists
 end

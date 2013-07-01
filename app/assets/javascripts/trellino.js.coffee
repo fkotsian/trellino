@@ -3,7 +3,7 @@ window.Trellino =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: -> console.log("Backbone initialized.")
 
 $(document).ready ->
   Trellino.initialize()

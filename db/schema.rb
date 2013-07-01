@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630010132) do
+ActiveRecord::Schema.define(:version => 20130701043856) do
+
+  create_table "board_assignments", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "board_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "boards", :force => true do |t|
     t.string   "title",      :null => false
@@ -34,6 +41,14 @@ ActiveRecord::Schema.define(:version => 20130630010132) do
     t.integer  "board_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",           :null => false
+    t.string   "password_digest", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "session_token"
   end
 
 end

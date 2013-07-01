@@ -1,6 +1,7 @@
 Trellino::Application.routes.draw do
 
-  resources :index only: [:index, :show]
+  resources :boards, only: [:index, :show]
+  resource :session, only: [:new, :create, :destroy]
 
-  root 'boards#index'
+  root to: 'sessions#new'
 end
