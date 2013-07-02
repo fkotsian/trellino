@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       user.reset_session_token!
       session[:session_token] = user.session_token
       
-      redirect_to boards_url
+      redirect_to root_url
     else
       render :json => "Invalid login."
     end

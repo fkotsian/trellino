@@ -1,7 +1,9 @@
+<h1>Your Boards</h1>
+
 <ul>
   <% boards.each(function (board) { %>
     <li>
-		<%= board.escape('title') %>
+		<a href="#boards/<%= board.id %>"><%= board.escape('title') %></a>
     </li>
   <% }); %>
 </ul>

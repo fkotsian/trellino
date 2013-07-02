@@ -1,7 +1,7 @@
-Trellino.Views.BoardsIndex = Backbone.View.extend({
+Trellino.Views.BoardShow = Backbone.View.extend({
 	events: {},
 	
-	template: JST['boards/index'],
+	template: JST['boards/show'],
 	
 	initialize: function () {
 	// listeners	
@@ -9,7 +9,8 @@ Trellino.Views.BoardsIndex = Backbone.View.extend({
 	
     render: function () {
       var renderedContent = this.template({
-        boards: this.collection
+				board: this.model,
+        lists: this.collection
       });
 
       this.$el.html(renderedContent);
