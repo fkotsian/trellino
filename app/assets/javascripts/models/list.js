@@ -1,17 +1,15 @@
 Trellino.Models.List = Backbone.Model.extend({
 	
 	parse: function (response) {		
-		var cards = response.cards
-		response.cards = new Trellino.Collections.Cards();
+		var cards = response.cards;
+		var cardsCollection = new Trellino.Collections.Cards();
 		
 		_(cards).each(function (cardAttrs) {
 			var newCard = new Trellino.Models.Card(cardAttrs);
-			response.cards.add(newCard);
+			cardsCollection.add(newCard);
 		})
 		
-		console.log(response);
-		
+		response.cards = cardsCollection;
 		return response;
 	}
-	
 });

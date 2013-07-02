@@ -5,5 +5,5 @@ class Board < ActiveRecord::Base
   
   has_many :board_assignments
   has_many :members, through: :board_assignments, source: :user
-  has_many :lists
+  has_many :lists, dependent: :destroy
 end

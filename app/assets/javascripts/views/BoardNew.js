@@ -4,11 +4,7 @@ Trellino.Views.BoardNew = Backbone.View.extend({
 	},
 	
 	template: JST['boards/new'],
-	
-	initialize: function () {
-	// listener to submit new board
-	},
-	
+		
   render: function () {
     var renderedContent = this.template({
 			board: this.model,
@@ -22,11 +18,11 @@ Trellino.Views.BoardNew = Backbone.View.extend({
 	create: function (event) {
 		var that = this;
 		event.preventDefault();
-		var newBoardAttrs = $('form').serializeJSON();
-
+		var newBoardAttrs = $('form').serializeJSON().board;
+		console.log(newBoardAttrs);
 		this.collection.create(newBoardAttrs, {
-			success: function (savedBoard, other) {
-				var newBoardURL = "boards/" + savedBoard.id;
+			success: function (savedBoard) {
+				var newBoardURL = "#boards/" + savedBoard.id;
 				Trellino.boardsRouter.navigate(newBoardURL, {trigger: true});
 			}
 		});
