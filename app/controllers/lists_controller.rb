@@ -10,4 +10,19 @@ class ListsController < ApplicationController
     render json: @list
   end
   
+  def create
+    @list = List.new(params[:list])
+    
+    if @list.save
+      render json: @list
+    else
+      render json: { errors: @list.errors.full_messages }
+    end
+  end
+  
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    render json: nil
+  end
 end

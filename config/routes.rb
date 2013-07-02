@@ -1,6 +1,6 @@
 Trellino::Application.routes.draw do
   resources :boards, only: [:index, :show, :create, :destroy] do
-    resources :lists, only: [:index, :show]
+    resources :lists, only: [:index, :show, :create, :destroy]
   end
   resources :cards, only: [:create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]

@@ -9,11 +9,12 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.collection, 'sync', this.render),
 		this.listenTo(this.collection, 'remove', this.render)
+    this.listenTo(this.collection, 'remove', this.normalizeRanks)
 	},
 	
 	events: {
 		"click button.deleteCard": "deleteCard",
-		"click button.newCard": "newCard"
+		"click button.addCard": "addCard"
 	},
 	
 	template: JST['cards/index'],
@@ -25,15 +26,8 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },
-	
-	deleteCard: function (event) {
-		var cardID = $(event.target).attr('data-id');
-		var deletableCard = this.collection.get(cardID);
-		deletableCard.destroy();
-		this.collection.remove(deletableCard);
-	},
-	
-	newCard: function (event) {
+		
+	addCard: function (event) {
 		var that = this;
 		$(event.target).toggleClass('hidden');
 		var newCardView = new Trellino.Views.CardNew({
@@ -41,6 +35,17 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 			model: that.model
 		});
 		$(event.target).parent().append(newCardView.render().$el);
-	}
+	},
+  
+	deleteCard: function (event) {
+		var cardID = $(event.target).attr('data-id');
+		var cardToDelete = this.collection.get(cardID);
+		cardToDelete.destroy();
+		this.collection.remove(cardToDelete);
+	},
+  
+  normalizeRanks: function (event) {
+    console.log(event);
+  }
 	
 });

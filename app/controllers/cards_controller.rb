@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-    render json: @card
+    render json: nil
   end
   
 end

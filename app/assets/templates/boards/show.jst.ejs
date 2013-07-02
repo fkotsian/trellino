@@ -2,12 +2,12 @@
 
 <ul>
 <% board.lists.each(function (list) { %>
-	<li id="list_<%= list.id %>">
-		<%= list.escape('title') %>
-	</li>
+  <li id="list_<%= list.id %>">
+    <%= list.escape('title') %>
+  </li>
 <% }) %>
 <li>
-<button class="newBoard">Add a Board</button>
+<button class="newList">Add a List</button>
 </ul>
 
 

@@ -35,7 +35,8 @@ Trellino.Routers.Boards = Backbone.Router.extend({
 		board.lists.fetch({
 			success: function (data) {
 				var showView = new Trellino.Views.BoardShow({
-					model: board
+					model: board,
+          collection: board.lists
 				})
 				that._swapView(showView);
 			}

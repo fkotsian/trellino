@@ -3,7 +3,7 @@ Trellino.Views.CardNew = Backbone.View.extend({
 	// Model is the list receiving a new card. Collection is the list's cards.
 	
 	events: {
-		"click input[type='submit']": "add",
+		"click input[type='submit']": "create",
 		"click button#cancel": "cancel"
 	},
 	
@@ -22,7 +22,7 @@ Trellino.Views.CardNew = Backbone.View.extend({
     return this;
   },
 	
-	add: function (event) {
+	create: function (event) {
 		var that = this;
 		event.preventDefault();
 		var newCardAttrs = $('form').serializeJSON().card;

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:user][:email])
     
-    if user.verify_password(params[:user][:password])
+    if user && user.verify_password(params[:user][:password])
       user.reset_session_token!
       session[:session_token] = user.session_token
       
