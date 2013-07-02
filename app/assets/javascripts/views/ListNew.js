@@ -1,4 +1,4 @@
-Trellino.Views.CardNew = Backbone.View.extend({
+Trellino.Views.ListNew = Backbone.View.extend({
 	
 	// Model is the list receiving a new card. Collection is the list's cards.
 	
@@ -7,14 +7,14 @@ Trellino.Views.CardNew = Backbone.View.extend({
 		"click button#cancel": "cancel"
 	},
 	
-	template: JST['cards/new'],
+	template: JST['lists/new'],
 		
   render: function () {
-		var newCardRank = this.collection.models.length + 1;
+		var newListRank = this.collection.models.length + 1;
     var renderedContent = this.template({
-			card: new Trellino.Models.Card(),
-			rank: newCardRank,
-			listID: this.model.id
+			list: new Trellino.Models.List(),
+			rank: newListRank,
+			boardID: this.model.id
     });
 
     this.$el.html(renderedContent);
