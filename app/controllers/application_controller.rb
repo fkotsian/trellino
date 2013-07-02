@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include SessionsHelper
   
   def current_user
     session_token = session[:session_token]

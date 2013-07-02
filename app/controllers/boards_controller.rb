@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_filter :require_login!
   
   def index
     @boards = Board.includes(:lists).where(:member == current_user)
