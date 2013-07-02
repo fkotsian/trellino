@@ -2,8 +2,8 @@
 
 <ul>
 <% lists.each(function (list) { %>
-	<li>
-	<%= list.escape('title') %>
+	<li id="<%= list.id %>">
+		<%= list.escape('title') %>
 	</li>
 <% }) %>
 </ul>
