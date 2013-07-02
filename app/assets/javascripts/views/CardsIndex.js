@@ -1,4 +1,4 @@
-Trellino.Views.BoardsIndex = Backbone.View.extend({
+Trellino.Views.CardsIndex = Backbone.View.extend({
 	
 	events: {
 		"click button.delete": "delete"
@@ -7,8 +7,9 @@ Trellino.Views.BoardsIndex = Backbone.View.extend({
 	template: JST['cards/index'],
 		
   render: function () {
+		console.log(this.collection);
     var renderedContent = this.template({
-      boards: this.collection
+      cards: this.collection
     });
 
     this.$el.html(renderedContent);

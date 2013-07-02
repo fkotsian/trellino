@@ -22,3 +22,7 @@ $(function () {
 	Trellino.authToken = "<%= form_authenticity_token %>";
 })
 </script>
+
+<script type="application/json" id="bootstrapped_boards_json">
+<%= Board.all.to_json.html_safe %>
+</script>

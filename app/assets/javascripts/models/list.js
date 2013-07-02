@@ -9,6 +9,8 @@ Trellino.Models.List = Backbone.Model.extend({
 			response.cards.add(newCard);
 		})
 		
+		console.log(response);
+		
 		return response;
 	}
 	

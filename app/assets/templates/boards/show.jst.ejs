@@ -1,8 +1,8 @@
 <h1><%= board.escape('title') %></h1>
 
 <ul>
-<% lists.each(function (list) { %>
-	<li rails id="<%= list.id %>">
+<% board.lists.each(function (list) { %>
+	<li id="list_<%= list.id %>">
 		<%= list.escape('title') %>
 	</li>
 <% }) %>

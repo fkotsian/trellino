@@ -11,14 +11,11 @@ Trellino.Routers.Boards = Backbone.Router.extend({
 	
 	index: function () {
 		var that = this;
-		Trellino.boards.fetch({
-			success: function () {
-				var indexView = new Trellino.Views.BoardsIndex({
-					collection: Trellino.boards
-				});
-				that._swapView(indexView);
-			}
+		
+		var indexView = new Trellino.Views.BoardsIndex({
+			collection: Trellino.boards
 		});
+		that._swapView(indexView);		
 	},
 	
 	new: function () {
@@ -38,13 +35,11 @@ Trellino.Routers.Boards = Backbone.Router.extend({
 		board.lists.fetch({
 			success: function (data) {
 				var showView = new Trellino.Views.BoardShow({
-					model: board,
-					collection: board.lists
+					model: board
 				})
 				that._swapView(showView);
 			}
-		}); 
-		
+		});
 	},
 		
 	_swapView: function (view) {
