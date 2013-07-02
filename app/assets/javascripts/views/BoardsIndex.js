@@ -1,20 +1,29 @@
 Trellino.Views.BoardsIndex = Backbone.View.extend({
-	events: {},
-	
-	template: JST['boards/index'],
 	
 	initialize: function () {
-	// listeners	
+		this.listenTo(this.collection, 'remove', this.render);
 	},
 	
-    render: function () {
-      var renderedContent = this.template({
-        boards: this.collection
-      });
+	events: {
+		"click button.delete": "delete"
+	},
+	
+	template: JST['boards/index'],
+		
+  render: function () {
+    var renderedContent = this.template({
+      boards: this.collection
+    });
 
-      this.$el.html(renderedContent);
+    this.$el.html(renderedContent);
 
-      return this;
-    }
+    return this;
+  },
+	
+	delete: function (event) {
+		var postID = $(event.target).attr('data-id');
+		var deletableBoard = this.collection.get(postID);
+		deletableBoard.destroy();
+	}
 	
 });

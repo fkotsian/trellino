@@ -1,0 +1,21 @@
+<h1>Create Board</h1>
+
+<form>
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= Trellino.authToken %>"
+	>
+
+	<label for="board_title">Title</label>
+	<input
+		id="board_title"
+		name="board[title]"
+		value="<%= board.title %>"
+	>
+
+	<input type="submit" value="Create">
+</form>
+
+
+<a href="#boards">Back</a>

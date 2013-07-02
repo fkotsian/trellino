@@ -16,4 +16,20 @@ class BoardsController < ApplicationController
     render json: @board
   end
   
+  def create
+    @board = current_user.boards.build(params[:board])
+    
+    if @board.save
+      render json: @board
+    else
+      render json: { errors: @model.errors.full_messages }
+    end
+  end
+  
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    render json: nil
+  end
+  
 end
