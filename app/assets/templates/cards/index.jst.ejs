@@ -1,0 +1,11 @@
+<ul>
+  <% cards.each(function (card) { %>
+    <li>
+		<%= card.escape('title') %>
+		<button class="delete" data-id="<%= card.id %>">Delete</button>
+    </li>
+  <% }); %>
+</ul>
+
+
+<a href="#cards/new">Add a Card</a>
