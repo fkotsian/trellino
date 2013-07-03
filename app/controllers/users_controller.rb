@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:id])
+    @user = User.new(params[:user])
     
     if @user.save
-      user.reset_session_token!
-      session[:session_token] = user.session_token
+      @user.reset_session_token!
+      session[:session_token] = @user.session_token
       
       redirect_to root_url
     else
