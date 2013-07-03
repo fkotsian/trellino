@@ -21,8 +21,8 @@ Trellino.Views.BoardsIndex = Backbone.View.extend({
   },
 	
 	delete: function (event) {
-		var postID = $(event.target).attr('data-id');
-		var deletableBoard = this.collection.get(postID);
+		var boardID = $(event.target).attr('data-id');
+		var deletableBoard = this.collection.get(boardID);
 		deletableBoard.destroy();
 	}
 	

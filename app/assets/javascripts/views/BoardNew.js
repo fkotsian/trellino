@@ -22,7 +22,7 @@ Trellino.Views.BoardNew = Backbone.View.extend({
 		this.collection.create(newBoardAttrs, {
 			success: function (savedBoard) {
 				var newBoardURL = "#boards/" + savedBoard.id;
-				Trellino.boardsRouter.navigate(newBoardURL, {trigger: true});
+        Trellino.boardsRouter.navigate(newBoardURL, { trigger: true });
 			}
 		});
 	},

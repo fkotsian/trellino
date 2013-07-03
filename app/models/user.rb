@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   validates :email, :password_digest, presence: true
   validates :email, uniqueness: true
   
-  has_many :board_assignments
-  has_many :boards, through: :board_assignments
+  has_many :board_assignments, inverse_of: :user
+  has_many :boards, through: :board_assignments, source: :board, inverse_of: :members
   
   def password=(input)
     self.password_digest = BCrypt::Password.create(input)
