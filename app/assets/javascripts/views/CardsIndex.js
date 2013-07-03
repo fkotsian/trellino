@@ -44,8 +44,19 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 		this.collection.remove(cardToDelete);
 	},
   
-  normalizeRanks: function (event) {
-    console.log(event);
+  normalizeRanks: function (deletedCard, collection) {
+    var deletedCardRank = deletedCard.get('rank');
+    if (deletedCardRank === collection.models.length + 1) {
+      return
+    } else {
+      collection.each(function (card) {
+        var cardRank = card.get('rank');
+        if (cardRank > deletedCardRank) {
+          card.set({rank: cardRank - 1});
+          card.save();
+        }
+      });
+    }
   }
 	
 });

@@ -1,4 +1,8 @@
 Trellino.Collections.Cards = Backbone.Collection.extend({
 	model: Trellino.Models.Card,
-	url: "/cards"
+	url: "/cards",
+  
+  comparator: function (card) {
+    return card.get('rank');
+  }
 });
