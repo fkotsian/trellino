@@ -66,7 +66,8 @@ Trellino.Views.BoardShow = Backbone.View.extend({
     var cardShowView = new Trellino.Views.CardShow({
       model: selectedCard
     });
-    Trellino.boardsRouter.$rootEl.append(cardShowView.render().$el);
+    $('.overlay').toggleClass('hidden');
+    $('.overlay').append(cardShowView.render().$el);
   }
   	
 });

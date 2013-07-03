@@ -1,15 +1,13 @@
-<div class="overlay">
-<span class="cardProp" data-id="title">
-  <h3><%= card.escape('title') %></h3>
-</span>
-  <ul>
+<div class="card">
+  <span class="cardProp" data-id="title">
+    <h3><%= card.escape('title') %></h3>
   </span>
-  <span class="cardProp" data-id="description">
-    <li>
-    <%= card.escape('description') %>
-    </li>
-  </span>
-  </ul>
-
+    <ul>
+    <span class="cardProp" data-id="description">
+      <li>
+      <%= card.escape('description') %>
+      </li>
+    </span>
+    </ul>
   <button class="closeCard">Close</a>
 </div>

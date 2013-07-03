@@ -37,6 +37,7 @@ Trellino.Views.CardShow = Backbone.View.extend({
   
   closeCard: function (event) {
     event.preventDefault();
+    $('.overlay').toggleClass('hidden');
     this.$el.remove();
   }	
 });
