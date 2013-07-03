@@ -9,7 +9,9 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   },
   
 	events: {
-		"click button.newList": "addList"
+		"click button.newList": "addList",
+    "click span.list_entry": "renameList",
+    "click span.card_entry": "showCard"
 	},
 	
 	template: JST['boards/show'],
@@ -41,6 +43,23 @@ Trellino.Views.BoardShow = Backbone.View.extend({
       collection: this.collection
 		});
 		$(event.target).parent().append(newListView.render().$el);
-	}
+	},
+  
+  renameList: function (event) {
+    // this.collection.trigger('sync');
+    var selectedList = this.collection.get(($(event.target).attr('data-id')))
+
+    if (selectedList){
+      var editListView = new Trellino.Views.ListEdit({
+        model: selectedList,
+        collection: this.collection
+      });
+      $(event.target).html(editListView.render().$el);
+    }
+  },
+  
+  showCard: function (event) {
+    console.log(event.target);
+  }
   	
 });

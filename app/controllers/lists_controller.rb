@@ -20,6 +20,17 @@ class ListsController < ApplicationController
     end
   end
   
+  def update
+    @list = List.find(params[:id])
+    @list.update_attributes(params[:list])
+    
+    if @list.save
+      render json: @list
+    else
+      render json: { errors: @list.errors.full_messages }
+    end
+  end
+  
   def destroy
     @list = List.find(params[:id])
     @list.destroy

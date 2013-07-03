@@ -1,11 +1,13 @@
 <ul>
   <% cards.each(function (card) { %>
     <li>
-		<%= card.escape('title') %>
-		<button class="deleteCard" data-id="<%= card.id %>">Delete</button>
+      <span class="card_entry" data-id="<%= card.id %>">
+    		<%= card.escape('title') %>
+      </span>
+  		<button class="deleteCard" data-id="<%= card.id %>">Delete</button>
     </li>
   <% }); %>
 	<li>
-	<button class="addCard">Add a Card</button>
+  	<button class="addCard">Add a Card</button>
 	</li>
 </ul>

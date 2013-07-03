@@ -1,0 +1,31 @@
+<form>
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= Trellino.authToken %>"
+	>
+	
+	<input
+		type="hidden"
+		id="list_board_id"
+		name="list[board_id]"
+		value="<%= boardID %>"
+	>
+	
+	<input
+		type="hidden"
+		id="list_rank"
+		name="list[rank]"
+		value="<%= rank %>"
+	>
+
+	<input
+		type="text"
+		id="list_title"
+		name="list[title]"
+		value="<%= list.get('title') %>"
+	>
+
+	<input type="submit" value="Edit">
+	<button id="cancel">Cancel</button>
+</form>

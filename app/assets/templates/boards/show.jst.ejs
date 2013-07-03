@@ -3,7 +3,9 @@
 <ul>
 <% board.lists.each(function (list) { %>
   <li id="list_<%= list.id %>">
-    <%= list.escape('title') %>
+    <span class="list_entry" data-id="<%= list.id %>">
+      <%= list.escape('title') %>
+    </span>
   </li>
 <% }) %>
 <li>
