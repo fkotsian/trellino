@@ -1,17 +1,18 @@
-Trellino.Views.ListEdit = Backbone.View.extend({
+Trellino.Views.CardEdit = Backbone.View.extend({
   
-  // Model is the board receiving a new list. Collection is the board's lists.
+  // Model is the card being edited.
 
   events: {
     "click input[type='submit']": "update",
     "click button#cancel": "cancel"
   },
 
-  template: JST['lists/edit'],
+  template: JST['cards/edit'],
 	
   render: function () {
     var renderedContent = this.template({
-      list: this.model,
+      card: this.model,
+      prop: this.cardProp
     });
 
     this.$el.html(renderedContent);
@@ -20,14 +21,15 @@ Trellino.Views.ListEdit = Backbone.View.extend({
 	
   update: function (event) {
     var that = this;
+    var cardProp = this.cardProp;
     event.preventDefault();
-    var listAttrs = $('form').serializeJSON().list;
-    this.model.set(listAttrs);
+    var cardAttr = $('form').find('#card_' + cardProp).val();
+    this.model.set(cardProp, cardAttr);
     this.model.save()
   },
 
   cancel: function (event) {
     event.preventDefault();
-    this.collection.trigger('sync');
+    this.model.trigger('sync');
   }
 });

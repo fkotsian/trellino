@@ -1,7 +1,11 @@
 <ul>
   <% cards.each(function (card) { %>
     <li>
-      <span class="card_entry" data-id="<%= card.id %>">
+      <span
+        class="card_entry"
+        id="<%= card.id %>"
+        data-id="<%= card.escape('list_id') %>"
+      >
     		<%= card.escape('title') %>
       </span>
   		<button class="deleteCard" data-id="<%= card.id %>">Delete</button>

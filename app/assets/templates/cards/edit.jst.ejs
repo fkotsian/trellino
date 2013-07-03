@@ -4,12 +4,12 @@
 		name="authenticity_token"
 		value="<%= Trellino.authToken %>"
 	>
-
+	
 	<input
 		type="text"
-		id="list_title"
-		name="list[title]"
-		value="<%= list.get('title') %>"
+		id="card_<%= prop %>"
+		name="card[<%= prop %>]"
+		value="<%= card.get(prop) %>"
 	>
 
 	<input type="submit" value="Update">

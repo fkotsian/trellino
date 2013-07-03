@@ -46,7 +46,6 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 	},
   
   renameList: function (event) {
-    // this.collection.trigger('sync');
     var selectedList = this.collection.get(($(event.target).attr('data-id')))
 
     if (selectedList){
@@ -59,7 +58,15 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   },
   
   showCard: function (event) {
-    console.log(event.target);
+    var cardID = $(event.target).attr('id');
+    var listID = $(event.target).attr('data-id');
+    
+    var cardList = this.collection.get(listID);
+    var selectedCard = cardList.get('cards').get(cardID);
+    var cardShowView = new Trellino.Views.CardShow({
+      model: selectedCard
+    });
+    Trellino.boardsRouter.$rootEl.append(cardShowView.render().$el);
   }
   	
 });
