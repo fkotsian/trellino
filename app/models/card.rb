@@ -5,4 +5,5 @@ class Card < ActiveRecord::Base
   validates :rank, uniqueness: { scope: :list_id }
   
   belongs_to :list
+  has_one :board, through: :list
 end

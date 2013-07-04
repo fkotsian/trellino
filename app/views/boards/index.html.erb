@@ -24,5 +24,9 @@ $(function () {
 </script>
 
 <script type="application/json" id="bootstrapped_boards_json">
-<%= @current_user.boards.to_json.html_safe %>
+<%= @boards.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="bootstrapped_cards_json">
+<%= @cards.to_json.html_safe %>
 </script>

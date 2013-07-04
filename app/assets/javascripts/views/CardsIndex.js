@@ -16,21 +16,40 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	template: JST['cards/index'],
 		
   render: function () {
+    var that = this;
     var renderedContent = this.template({
-      cards: this.collection
+      cards: this.collection,
+      list: this.model
     });
     this.$el.html(renderedContent);
+    this.$("ul.card_list").sortable({
+      connectWith: "ul.card_list",
+      receive: function (event, ui) {
+        var destinationList = that.model;
+        var targetListID = $(event.target).data('list_id');
+      },
+      stop: function (event, ui) {
+        // This code is supposed to remove the card from its collection.
+        // The collection is tied to the list that's losing a card.
+        // However the receive, which happens first, will add the card to another view's collection.
+        // The sync() method won't work (says no url specified). Had similar problem with Dylan.
+        var movedCard = that.collection.get(ui.item.data('id'));
+        that.collection.remove(movedCard);
+        movedCard.sync();
+      }
+    });
+    
     return this;
   },
 		
 	addCard: function (event) {
 		var that = this;
-		$(event.target).toggleClass('hidden');
+    $(event.target).remove();
 		var newCardView = new Trellino.Views.CardNew({
 			collection: that.model.get('cards'),
 			model: that.model
 		});
-		$(event.target).parent().append(newCardView.render().$el);
+		this.$('ul.card_list').append(newCardView.render().$el);
 	},
   
 	deleteCard: function (event) {

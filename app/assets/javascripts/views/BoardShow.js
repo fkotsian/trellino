@@ -31,13 +31,13 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 			var $cardsViewEl = cardsIndexView.render().$el;
 			that.$el.find('li#list_' + list.id).append($cardsViewEl);
 		});
-		
+
     return this;
   },
 	
 	addList: function (event) {
 		var that = this;
-		$(event.target).toggleClass('hidden');
+    $(event.target).toggleClass('hidden');
 		var newListView = new Trellino.Views.ListNew({
       model: this.model,
       collection: this.collection
@@ -59,13 +59,13 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   
   showCard: function (event) {
     var cardID = $(event.target).attr('id');
-    var listID = $(event.target).attr('data-id');
-    
+    var listID = $(event.target).attr('data-list_id');
     var cardList = this.collection.get(listID);
     var selectedCard = cardList.get('cards').get(cardID);
     var cardShowView = new Trellino.Views.CardShow({
       model: selectedCard
     });
+    
     $('.overlay').toggleClass('hidden');
     $('.overlay').append(cardShowView.render().$el);
   }

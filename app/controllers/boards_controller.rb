@@ -2,7 +2,10 @@ class BoardsController < ApplicationController
   before_filter :require_login!
   
   def index
-    @current_user = current_user
+    @boards = Board.includes(:cards).for_member(current_user)
+    
+    @cards = []
+    @boards.each { |board| @cards << board.cards }
   end
   
   def show

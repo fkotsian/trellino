@@ -1,17 +1,21 @@
-<ul>
+<ul class="card_list" data-list_id="<%= list.id %>">
   <% cards.each(function (card) { %>
-    <li>
+    <li
+      class="card_entry"
+      data-id="<%= card.id %>"
+      data-list_id="<%= card.escape('list_id') %>"
+    >
       <span
         class="card_entry"
         id="<%= card.id %>"
-        data-id="<%= card.escape('list_id') %>"
+        data-list_id="<%= card.escape('list_id') %>"
       >
     		<%= card.escape('title') %>
       </span>
   		<button class="deleteCard" data-id="<%= card.id %>">Delete</button>
     </li>
   <% }); %>
-	<li>
-  	<button class="addCard">Add a Card</button>
-	</li>
 </ul>
+<div class="add_button">
+<button class="addCard">Add a Card</button>
+</div>
