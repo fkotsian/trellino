@@ -27,6 +27,10 @@ $(function () {
 <%= @boards.to_json.html_safe %>
 </script>
 
+<script type="application/json" id="bootstrapped_lists_json">
+<%= @lists.to_json.html_safe %>
+</script>
+
 <script type="application/json" id="bootstrapped_cards_json">
 <%= @cards.to_json.html_safe %>
 </script>

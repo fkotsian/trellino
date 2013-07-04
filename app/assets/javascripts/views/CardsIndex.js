@@ -3,9 +3,8 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	// Collection is the cards. Model is the list they belong to.
 		
 	initialize: function() {
-		this.listenTo(this.collection, 'sync', this.render),
+		this.listenTo(this.collection, 'add', this.render),
 		this.listenTo(this.collection, 'remove', this.render)
-    this.listenTo(this.collection, 'remove', this.normalizeRanks)
 	},
 	
 	events: {
@@ -25,20 +24,16 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
     this.$("ul.card_list").sortable({
       connectWith: "ul.card_list",
       receive: function (event, ui) {
-        var destinationList = that.model;
-        var targetListID = $(event.target).data('list_id');
+        var movedCardID = ui.item.data('id');
+        var movedCard = Trellino.cards.get(movedCardID);
+        movedCard.set({ list_id: that.model.id });
+        that.collection.add(movedCard);
+        that._realignList($(event.target));
       },
       stop: function (event, ui) {
-        // This code is supposed to remove the card from its collection.
-        // The collection is tied to the list that's losing a card.
-        // However the receive, which happens first, will add the card to another view's collection.
-        // The sync() method won't work (says no url specified). Had similar problem with Dylan.
-        var movedCard = that.collection.get(ui.item.data('id'));
-        that.collection.remove(movedCard);
-        movedCard.sync();
+        that._realignList($(event.target));
       }
     });
-    
     return this;
   },
 		
@@ -46,7 +41,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 		var that = this;
     $(event.target).remove();
 		var newCardView = new Trellino.Views.CardNew({
-			collection: that.model.get('cards'),
+			collection: that.model.cards,
 			model: that.model
 		});
 		this.$('ul.card_list').append(newCardView.render().$el);
@@ -57,21 +52,17 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 		var cardToDelete = this.collection.get(cardID);
 		cardToDelete.destroy();
 		this.collection.remove(cardToDelete);
+    this._realignList($(event.target));
 	},
   
-  normalizeRanks: function (deletedCard, collection) {
-    var deletedCardRank = deletedCard.get('rank');
-    if (deletedCardRank === collection.models.length + 1) {
-      return
-    } else {
-      collection.each(function (card) {
-        var cardRank = card.get('rank');
-        if (cardRank > deletedCardRank) {
-          card.set({rank: cardRank - 1});
-          card.save();
-        }
-      });
-    }
+  _realignList: function ($ul) {
+    var list = $ul.find('li');
+    var length = list.length;
+    
+    $(list).each(function (index, item) {
+      var card = Trellino.cards.get($(item).data('id'));
+      card.set({ rank: index + 1 });
+      card.save({silent: true}); // doesn't work!
+    })
   }
-	
 });

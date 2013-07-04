@@ -5,7 +5,7 @@
 Trellino.Views.BoardShow = Backbone.View.extend({
   
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render)
+    this.listenTo(this.collection, 'add', this.render)
   },
   
 	events: {
@@ -26,7 +26,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 		this.collection.each(function (list) {
 			var cardsIndexView = new Trellino.Views.CardsIndex({
 				model: list,
-				collection: list.get('cards')
+				collection: list.cards
 			});
 			var $cardsViewEl = cardsIndexView.render().$el;
 			that.$el.find('li#list_' + list.id).append($cardsViewEl);
@@ -59,9 +59,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   
   showCard: function (event) {
     var cardID = $(event.target).attr('id');
-    var listID = $(event.target).attr('data-list_id');
-    var cardList = this.collection.get(listID);
-    var selectedCard = cardList.get('cards').get(cardID);
+    var selectedCard = Trellino.cards.get(cardID);
     var cardShowView = new Trellino.Views.CardShow({
       model: selectedCard
     });
