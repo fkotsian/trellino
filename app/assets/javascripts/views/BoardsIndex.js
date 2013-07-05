@@ -3,11 +3,7 @@ Trellino.Views.BoardsIndex = Backbone.View.extend({
 	initialize: function () {
 		this.listenTo(this.collection, 'remove', this.render);
 	},
-	
-	events: {
-		"click button.delete": "delete"
-	},
-	
+		
 	template: JST['boards/index'],
 		
   render: function () {

@@ -11,7 +11,8 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 	events: {
 		"click button.newList": "addList",
     "click span.list_entry": "renameList",
-    "click li.card_entry": "showCard"
+    "click li.card_entry": "showCard",
+		"click button.deleteBoard": "deleteBoard"
 	},
 	
 	template: JST['boards/show'],
@@ -78,6 +79,14 @@ Trellino.Views.BoardShow = Backbone.View.extend({
     
     $('.overlay').toggleClass('hidden');
     $('.overlay').append(cardShowView.render().$el);
+  },
+  
+  deleteBoard: function (event) {
+    this.model.destroy({
+      success: function () {
+        Trellino.boardsRouter.navigate('#', { trigger: true });
+      }
+    });
   },
   
   _realignBoard: function ($ul) {
