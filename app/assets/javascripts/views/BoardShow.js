@@ -26,7 +26,11 @@ Trellino.Views.BoardShow = Backbone.View.extend({
     
     this.$('ul.list_list').sortable({
       tolerance: 'pointer',
+      start: function (event, ui) {
+        $(ui.item).toggleClass('dragged');
+      },
       stop: function (event, ui) {
+        $(ui.item).toggleClass('dragged');
         that._realignBoard($(event.target));
       }
     });

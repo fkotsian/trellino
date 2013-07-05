@@ -25,7 +25,10 @@ Trellino.Views.CardEdit = Backbone.View.extend({
     event.preventDefault();
     var cardAttr = $('form').find('#card_' + cardProp).val();
     this.model.set(cardProp, cardAttr);
-    this.model.save()
+    if (this.model.save) {
+    } else {
+      this.$('input[type="text"]').effect("highlight", {}, 500)
+    }
   },
 
   cancel: function (event) {

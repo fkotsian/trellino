@@ -7,9 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<h3>Trellino</h3>
-
-<%= yield %>
+  
+  <div class="container">
+    <header class="row">
+      <div class="span4">
+        <nav class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li><a href="#">Trellino</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+  <%= yield %>
 
 <div class="overlay hidden">
 </div>

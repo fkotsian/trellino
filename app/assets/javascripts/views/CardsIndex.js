@@ -35,6 +35,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       tolerance: 'pointer',
       connectWith: "ul.card_list",
       start: function (event, ui) {
+        $(ui.item).toggleClass('dragged');
         var cardHeight = $(ui.item).height();
         var cardWidth = $(ui.item).width();
         that.$("li.card_placeholder").height(cardHeight);
@@ -50,6 +51,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
         that._realignList($(event.target));
       },
       stop: function (event, ui) {
+        $(ui.item).toggleClass('dragged');
         that._realignList($(event.target));
       }
     });
