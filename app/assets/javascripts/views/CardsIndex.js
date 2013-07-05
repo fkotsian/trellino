@@ -45,13 +45,19 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
         var movedCardID = ui.item.data('id');
         var movedCard = Trellino.cards.get(movedCardID);
         movedCard.set({ list_id: that.model.id });
+        that._realignList($(event.target));
+        movedCard.save();
         that.collection.add(movedCard);
         var $placeholder = that.$el.find('li.placeholder');
         $placeholder.addClass('hidden');
-        that._realignList($(event.target));
       },
       stop: function (event, ui) {
         $(ui.item).toggleClass('dragged');
+        var movedCardID = ui.item.data('id');
+        var movedCard = Trellino.cards.get(movedCardID);
+        if (that.model.id != movedCard.get('list_id')) {
+          that.collection.remove(movedCardID);
+        }
         that._realignList($(event.target));
       }
     });
