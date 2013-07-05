@@ -5,4 +5,5 @@ class Card < ActiveRecord::Base
   
   belongs_to :list
   has_one :board, through: :list
+  has_many :todo_items, inverse_of: :card
 end
