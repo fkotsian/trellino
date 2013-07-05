@@ -26,7 +26,15 @@ Trellino.Views.CardNew = Backbone.View.extend({
 		var that = this;
 		event.preventDefault();
 		var newCardAttrs = $('form').serializeJSON().card;
-		this.collection.create(newCardAttrs);
+		this.collection.create(newCardAttrs, {
+      wait: true,
+      success: function (data) {
+        Trellino.cards.add(data);
+      },
+      error: function (data, xhr) {
+        this.$('input[type="text"]').effect("highlight", {}, 500)
+      }
+    });
 	},
 	
 	cancel: function (event) {

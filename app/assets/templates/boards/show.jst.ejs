@@ -1,8 +1,8 @@
 <h1><%= board.escape('title') %></h1>
 
-<ul>
-<% board.lists.each(function (list) { %>
-  <li class="list_entry" id="list_<%= list.id %>">
+<ul class="list_list">
+<% lists.each(function (list) { %>
+  <li class="list_entry" data-id="<%= list.id %>" id="list_<%= list.id %>">
     <span class="list_entry" data-id="<%= list.id %>">
       <%= list.escape('title') %>
     </span>

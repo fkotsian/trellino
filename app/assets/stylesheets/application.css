@@ -16,6 +16,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   padding: 8px;
+  background-color: #c3c3c3;
 }
 
 div#content {
@@ -35,6 +36,23 @@ div#content {
 	display: none;
 }
 
+.btn {
+}
+
+a {
+  text-decoration: none !important;
+  font-weight: 600;
+}
+
+a.back_link {
+  clear: both;
+  display: block;
+}
+
+input[type="text"]{
+  width: inherit;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -46,22 +64,42 @@ li {
   padding-left: 0;
 }
 
-a {
-  text-decoration: none;
-  font-weight: 5px;
-}
-
 li.list_entry {
+  text-align: center;
+  font-size: 18px;
+  
+  width: 225px;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  background-color: white;
+  
   float: left;
 }
 
 .card_placeholder {
-  background-color: black;
+  background-color: #909090;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
-a.back_link {
-  clear: both;
-  display: block;
+
+li.card_entry {
+  font-size: 15px;
+  background-color: #70ccf9;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  font-weight: 700
+}
+
+li.placeholder {
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .cardDetail {
@@ -75,14 +113,4 @@ a.back_link {
     -moz-border-radius: 5px;
 }
 
-li.list_entry {
-  width: 225px;
-}
 
-li.card_entry {
-  border: 1px solid black;
-  padding: 3px;
-  margin: 3px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-}

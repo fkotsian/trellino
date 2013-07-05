@@ -6,7 +6,7 @@ class CardsController < ApplicationController
     if @card.save
       render json: @card
     else
-      render json: { errors: @card.errors.full_messages }
+      render json: { errors: @card.errors.full_messages }, status: 422
     end
   end
   

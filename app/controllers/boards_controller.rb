@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
     if @board.save
       render json: @board
     else
-      render json: { errors: @board.errors.full_messages }
+      render json: { errors: @board.errors.full_messages }, status: 422
     end
   end
   

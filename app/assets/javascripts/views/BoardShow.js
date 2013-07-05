@@ -19,9 +19,17 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   render: function () {
 		var that = this;
     var renderedContent = this.template({
-			board: this.model
+			board: this.model,
+      lists: this.collection
     });
     this.$el.html(renderedContent);
+    
+    this.$('ul.list_list').sortable({
+      tolerance: 'pointer',
+      stop: function (event, ui) {
+        that._realignBoard($(event.target));
+      }
+    });
 		
 		this.collection.each(function (list) {
 			var cardsIndexView = new Trellino.Views.CardsIndex({
@@ -66,6 +74,21 @@ Trellino.Views.BoardShow = Backbone.View.extend({
     
     $('.overlay').toggleClass('hidden');
     $('.overlay').append(cardShowView.render().$el);
+  },
+  
+  _realignBoard: function ($ul) {
+    var listItems = $ul.find('li');
+    var length = listItems.length;
+    
+    var rankIndex = 1;
+    $(listItems).each(function (index, item) {
+      if ($(item).hasClass('list_entry')) {
+        var list = Trellino.lists.get($(item).data('id'));
+        list.set({ rank: rankIndex });
+        list.save({silent: true});
+        rankIndex++;
+      }
+    })
   }
   	
 });

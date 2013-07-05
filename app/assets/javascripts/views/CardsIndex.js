@@ -34,6 +34,12 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       placeholder: "card_placeholder",
       tolerance: 'pointer',
       connectWith: "ul.card_list",
+      start: function (event, ui) {
+        var cardHeight = $(ui.item).height();
+        var cardWidth = $(ui.item).width();
+        that.$("li.card_placeholder").height(cardHeight);
+        that.$("li.card_placeholder").width(cardWidth);
+      },
       receive: function (event, ui) {
         var movedCardID = ui.item.data('id');
         var movedCard = Trellino.cards.get(movedCardID);
