@@ -18,8 +18,7 @@ body {
   padding: 8px;
 }
 
-.hidden {
-	display: none;
+div#content {
 }
 
 .overlay {
@@ -29,11 +28,35 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6)
+  background-color: rgba(0, 0, 0, 0.3)
+}
+
+.hidden {
+	display: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+li {
+  padding-top: 2px;
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 5px;
 }
 
 li.list_entry {
   float: left;
+}
+
+.card_placeholder {
+  background-color: black;
 }
 
 a.back_link {
@@ -41,14 +64,25 @@ a.back_link {
   display: block;
 }
 
-.card {
+.cardDetail {
+    padding: 20px;
     border: 1px solid black;
     background-color: rgba(255, 255, 255, 255);
     position: fixed;
     top: 50%;
     left: 50%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+li.list_entry {
+  width: 225px;
 }
 
 li.card_entry {
   border: 1px solid black;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }

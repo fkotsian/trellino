@@ -1,13 +1,13 @@
-<div class="card">
+<div class="cardDetail">
   <span class="cardProp" data-id="title">
     <h3><%= card.escape('title') %></h3>
   </span>
     <ul>
     <span class="cardProp" data-id="description">
       <li>
-      <%= card.escape('description') %>
+      <%= card.escape('description') || "No description" %>
       </li>
     </span>
     </ul>
-  <button class="closeCard">Close</a>
+  <button class="closeCard btn">X</a>
 </div>

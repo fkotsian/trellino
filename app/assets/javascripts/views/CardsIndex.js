@@ -21,13 +21,26 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       list: this.model
     });
     this.$el.html(renderedContent);
+    
+    var $placeholder = this.$el.find('li.placeholder');
+    if (this.collection.length == 0) {
+      $placeholder.removeClass('hidden');
+    } else {
+      $placeholder.addClass('hidden');
+    }
+    
     this.$("ul.card_list").sortable({
+      items: "> .card_entry",
+      placeholder: "card_placeholder",
+      tolerance: 'pointer',
       connectWith: "ul.card_list",
       receive: function (event, ui) {
         var movedCardID = ui.item.data('id');
         var movedCard = Trellino.cards.get(movedCardID);
         movedCard.set({ list_id: that.model.id });
         that.collection.add(movedCard);
+        var $placeholder = that.$el.find('li.placeholder');
+        $placeholder.addClass('hidden');
         that._realignList($(event.target));
       },
       stop: function (event, ui) {
@@ -52,17 +65,29 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 		var cardToDelete = this.collection.get(cardID);
 		cardToDelete.destroy();
 		this.collection.remove(cardToDelete);
+    if (this.collection.length == 0) {
+      var $placeholder = this.$el.find('li.placeholder');
+      $placeholder.addClass('hidden');
+    }
     this._realignList($(event.target));
 	},
   
   _realignList: function ($ul) {
-    var list = $ul.find('li');
-    var length = list.length;
+    var listItems = $ul.find('li');
+    var length = listItems.length;
     
-    $(list).each(function (index, item) {
-      var card = Trellino.cards.get($(item).data('id'));
-      card.set({ rank: index + 1 });
-      card.save({silent: true}); // doesn't work!
+    if (length === 1) {
+      var $placeholder = this.$el.find('li.placeholder');
+      $placeholder.removeClass('hidden');
+    }
+    $(listItems).each(function (index, item) {
+      if ($(item).hasClass("placeholder")) {
+        null
+      } else {
+        var card = Trellino.cards.get($(item).data('id'));
+        card.set({ rank: index + 1 });
+        card.save({silent: true}); // doesn't work!  
+      }
     })
   }
 });

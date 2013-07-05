@@ -11,7 +11,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 	events: {
 		"click button.newList": "addList",
     "click span.list_entry": "renameList",
-    "click span.card_entry": "showCard"
+    "click li.card_entry": "showCard"
 	},
 	
 	template: JST['boards/show'],
@@ -58,7 +58,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   },
   
   showCard: function (event) {
-    var cardID = $(event.target).attr('id');
+    var cardID = $(event.target).attr('data-id');
     var selectedCard = Trellino.cards.get(cardID);
     var cardShowView = new Trellino.Views.CardShow({
       model: selectedCard

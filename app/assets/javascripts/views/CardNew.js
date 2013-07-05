@@ -4,7 +4,7 @@ Trellino.Views.CardNew = Backbone.View.extend({
 	
 	events: {
 		"click input[type='submit']": "create",
-		"click button#cancel": "cancel"
+		"click button.cancel": "cancel"
 	},
 	
 	template: JST['cards/new'],
@@ -31,6 +31,6 @@ Trellino.Views.CardNew = Backbone.View.extend({
 	
 	cancel: function (event) {
 		event.preventDefault();
-		this.collection.trigger('sync');
+		this.collection.trigger('add');
 	}
 });

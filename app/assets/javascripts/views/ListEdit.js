@@ -4,7 +4,7 @@ Trellino.Views.ListEdit = Backbone.View.extend({
 
   events: {
     "click input[type='submit']": "update",
-    "click button#cancel": "cancel"
+    "click button.cancel": "cancel"
   },
 
   template: JST['lists/edit'],
@@ -24,10 +24,11 @@ Trellino.Views.ListEdit = Backbone.View.extend({
     var listAttrs = $('form').serializeJSON().list;
     this.model.set(listAttrs);
     this.model.save()
+    this.collection.trigger('add');
   },
 
   cancel: function (event) {
     event.preventDefault();
-    this.collection.trigger('sync');
+    this.collection.trigger('add');
   }
 });
