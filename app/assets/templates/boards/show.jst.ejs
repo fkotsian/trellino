@@ -13,5 +13,24 @@
 <div class="add_button">
 <button class="newList btn">Add a List</button>
 </div>
+<br>
 
+<div class="board_members">
+<h3>Board Members</h3>
+<ul class="member_list">
+<% _(members).each(function (member) { %>
+  <li class="member_entry" data-id="<%= member.id %>" id="member_<%= member.id %>">
+    <span class="member_entry" data-id="<%= member.id %>">
+      <%= member.email %>
+    </span>
+  </li>
+<% }) %>
+  <li>
+  <button class="newMember btn">Add a Member</button>
+  </li>
+</ul>
+</div>
+
+
+<br>
 <button class="deleteBoard btn">Delete this Board</button>

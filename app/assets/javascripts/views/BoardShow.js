@@ -11,6 +11,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 	events: {
 		"click button.newList": "addList",
     "click span.list_entry": "renameList",
+		"click button.newMember": "addMember",
     "click li.card_entry": "showCard",
 		"click button.deleteBoard": "deleteBoard"
 	},
@@ -19,9 +20,11 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 		
   render: function () {
 		var that = this;
+    var boardMembers = this.model.get('members');
     var renderedContent = this.template({
 			board: this.model,
-      lists: this.collection
+      lists: this.collection,
+      members: boardMembers
     });
     this.$el.html(renderedContent);
     
@@ -68,6 +71,15 @@ Trellino.Views.BoardShow = Backbone.View.extend({
       });
       $(event.target).html(editListView.render().$el);
     }
+  },
+  
+  addMember: function (event) {
+    $(event.target).toggleClass('hidden');
+		var newMemberView = new Trellino.Views.MemberNew({
+      model: this.model,
+      collection: this.collection
+		});
+		$(event.target).parent().append(newMemberView.render().$el);
   },
   
   showCard: function (event) {

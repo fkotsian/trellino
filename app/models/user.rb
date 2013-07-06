@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
     self.session_token
   end
   
+  def as_json(options = {})
+    super(options.merge(except: :password_digest))
+  end
+  
 end

@@ -27,6 +27,23 @@ class BoardsController < ApplicationController
     end
   end
   
+  def update
+    @board = Board.find(params[:id])
+    @board.update_attributes(params[:board])
+    
+    if params[:newMemberEmail]
+      email = params[:newMemberEmail]
+      new_member = User.find_by_email(email)
+      new_member && !@board.members.include?(new_member) && @board.members << new_member
+    end
+    
+    if @board.save
+      render json: @board
+    else
+      render json: { errors: @board.errors.full_messages }, status: 422
+    end
+  end
+  
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
