@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   has_many :board_assignments, inverse_of: :user
   has_many :boards, through: :board_assignments, source: :board, inverse_of: :members
   
+  has_many :card_assignments, inverse_of: :user
+  has_many :cards, through: :card_assignments, source: :card, inverse_of: :users
+  
+  
   def password=(input)
     self.password_digest = BCrypt::Password.create(input)
   end

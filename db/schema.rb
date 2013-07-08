@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705215022) do
+ActiveRecord::Schema.define(:version => 20130708183619) do
 
   create_table "board_assignments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20130705215022) do
 
   create_table "boards", :force => true do |t|
     t.string   "title",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "card_assignments", :force => true do |t|
+    t.integer  "card_id",    :null => false
+    t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

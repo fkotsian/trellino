@@ -7,19 +7,19 @@ window.Trellino = {
 	  Trellino.boards = new Trellino.Collections.Boards();
 		var bootstrappedBoards = JSON.parse($("#bootstrapped_boards_json").html());
 		_(bootstrappedBoards).each(function (boardObject) {
-			Trellino.boards.add(boardObject)
+			Trellino.boards.add(boardObject);
 		});
     
 	  Trellino.lists = new Trellino.Collections.Lists();
 		var bootstrappedLists = JSON.parse($("#bootstrapped_lists_json").html());
 		_(bootstrappedLists).each(function (listObject) {
-			Trellino.lists.add(listObject)
+			Trellino.lists.add(listObject);
 		});
     
     Trellino.cards = new Trellino.Collections.Cards();
     var bootstrappedCards = JSON.parse($("#bootstrapped_cards_json").html());
 		_(bootstrappedCards).each(function (cardObject) {
-			Trellino.cards.add(cardObject)
+			Trellino.cards.add(cardObject, {parse: true});
 		});
     
     Trellino.boards.each(function (board) {

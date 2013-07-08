@@ -1,0 +1,23 @@
+<form>
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= Trellino.authToken %>"
+	>
+	
+	<input
+		type="hidden"
+		id="item_card_id"
+		name="todo_item[card_id]"
+		value="<%= card.id %>"
+	>
+	
+	<input
+		type="text"
+		id="todo_item_title"
+		name="todo_item[title]"
+	>
+  <br>
+	<input class="btn" type="submit" value="&#10003">
+	<button class="cancel btn">X</button>
+</form>

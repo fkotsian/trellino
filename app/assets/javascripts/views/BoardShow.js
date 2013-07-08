@@ -5,7 +5,7 @@
 Trellino.Views.BoardShow = Backbone.View.extend({
   
   initialize: function () {
-    this.listenTo(this.collection, 'add', this.render)
+    this.listenTo(this.collection, 'add', this.render);
   },
   
 	events: {
@@ -86,7 +86,8 @@ Trellino.Views.BoardShow = Backbone.View.extend({
     var cardID = $(event.target).attr('data-id');
     var selectedCard = Trellino.cards.get(cardID);
     var cardShowView = new Trellino.Views.CardShow({
-      model: selectedCard
+      model: selectedCard,
+      collection: selectedCard.get('todo_items')
     });
     
     $('.overlay').toggleClass('hidden');

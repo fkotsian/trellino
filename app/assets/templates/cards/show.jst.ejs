@@ -8,6 +8,29 @@
       <%= card.escape('description') || "No description" %>
       </li>
     </span>
+    <span class="cardProp" data-id="todo_items">
+      <li>
+        <ul class="todo_list">
+          <% todoItems.each(function (item) { %>
+            <li>
+              <%= item.escape('title') %>
+              <input
+                type="checkbox"
+                data-id="<%= item.id %>"
+                <% if (item.get('done')) { %>
+                  checked
+                <% } %>
+              >
+              <button class="deleteTodo btn" data-id="<%= item.id %>">X</button>
+            </li>
+          <% }) %>
+          <li>
+            <button class="newTodo btn">New Todo</button>
+          </li>
+        </ul>
+      </li>
+    </span>
     </ul>
+    <br>
   <button class="closeCard btn">X</a>
 </div>

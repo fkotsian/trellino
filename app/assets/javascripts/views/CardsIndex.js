@@ -100,7 +100,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       } else {
         var card = Trellino.cards.get($(item).data('id'));
         card.set({ rank: index + 1 });
-        card.save({silent: true}); // doesn't work!  
+        card.save({silent: true}); // doesn't work!
       }
     })
   }
