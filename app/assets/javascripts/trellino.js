@@ -4,6 +4,9 @@ window.Trellino = {
   Views: {},
   Routers: {},
   initialize: function () {
+    
+    Trellino.myID = parseInt($("#bootstrapped_user_id").html());
+    
 	  Trellino.boards = new Trellino.Collections.Boards();
 		var bootstrappedBoards = JSON.parse($("#bootstrapped_boards_json").html());
 		_(bootstrappedBoards).each(function (boardObject) {

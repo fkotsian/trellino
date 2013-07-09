@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
     
     @cards = []
     @boards.each { |board| @cards << board.cards }
+    @myID = current_user.id
   end
   
   def show

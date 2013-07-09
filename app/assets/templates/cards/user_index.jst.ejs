@@ -1,4 +1,7 @@
-<ul class="card_list" data-list_id="<%= list.id %>">
+<span>
+
+<h3>Your Cards</h3>
+<ul class="user_card_list">
 
   <li class="placeholder">
     No Cards
@@ -8,12 +11,10 @@
     <li
       class="card_entry"
       data-id="<%= card.id %>"
-      data-list_id="<%= card.escape('list_id') %>"
     >
       <span
         class="card_entry"
         data-id="<%= card.id %>"
-        data-list_id="<%= card.escape('list_id') %>"
       >
     		<%= card.escape('title') %>
       </span>
@@ -21,6 +22,4 @@
     </li>
   <% }); %>
 </ul>
-<div class="add_button">
-<button class="addCard btn">Add a Card</button>
-</div>
+</span>

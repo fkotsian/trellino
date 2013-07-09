@@ -8,6 +8,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	},
 	
 	events: {
+    "mouseover li.card_entry": "showDelete",
 		"click button.deleteCard": "deleteCard",
 		"click button.addCard": "addCard"
 	},
@@ -63,6 +64,10 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
     });
     return this;
   },
+  
+  showDelete: function (event) {
+    $(event.target).find('button.deleteCard').toggleClass('hidden');
+  },
 		
 	addCard: function (event) {
 		var that = this;
@@ -81,7 +86,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 		this.collection.remove(cardToDelete);
     if (this.collection.length == 0) {
       var $placeholder = this.$el.find('li.placeholder');
-      $placeholder.addClass('hidden');
+      $placeholder.removeClass('hidden');
     }
     this._realignList($(event.target));
 	},

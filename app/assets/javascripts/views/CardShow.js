@@ -35,7 +35,6 @@ Trellino.Views.CardShow = Backbone.View.extend({
   },
   
   editCard: function (event) {
-    console.log('editing');
     var cardProp = $(event.currentTarget).attr('data-id');
     
     if (cardProp == "todo_items") {

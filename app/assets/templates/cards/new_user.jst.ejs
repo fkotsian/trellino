@@ -7,7 +7,9 @@
 		
 	<select name="new_user_email">
   	<% _(elegibleMembers).each(function (member) { %>
-      <option value="<%= member.get('email') %>"><%= member.get('email') %></option>
+      
+      <% var userLabel = (member.id === Trellino.myID ? "you" : member.get('email')); %>
+      <option value="<%= member.get('email') %>"><%= userLabel %></option>
     <% }) %>
   </select>
 

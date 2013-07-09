@@ -19,6 +19,11 @@ body {
   background-color: #daf1fb !important;
 }
 
+span.title {
+  font-weight: 700;
+  font-size: 28px;
+}
+
 div#content {
   background-color: white;
   margin:0px auto;
@@ -159,6 +164,10 @@ li.dragged {
     left: 40%;
     border-radius: 5px;
     -moz-border-radius: 5px;
+}
+
+.user_card_list {
+  width: 30%;
 }
 
 
