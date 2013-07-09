@@ -5,6 +5,7 @@ Trellino::Application.routes.draw do
   resources :cards, only: [:create, :update, :destroy] do
       resources :todo_items, only: [:create, :update, :destroy]
     end
+  resources :card_assignments, only: :destroy
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :destroy]
   root to: 'boards#index'

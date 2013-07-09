@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
   
   def as_json(options = {})
-    super(options.merge(except: :password_digest))
+    super(options.merge({ except: :password_digest, include: :cards }))
   end
   
 end

@@ -1,0 +1,16 @@
+<form>
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= Trellino.authToken %>"
+	>
+		
+	<select name="new_user_email">
+  	<% _(elegibleMembers).each(function (member) { %>
+      <option value="<%= member.get('email') %>"><%= member.get('email') %></option>
+    <% }) %>
+  </select>
+
+	<input type="submit"  class="btn" value="&#10003">
+	<button class="cancel btn">X</button>
+</form>

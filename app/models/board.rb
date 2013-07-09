@@ -14,6 +14,6 @@ class Board < ActiveRecord::Base
   end
   
   def as_json(options = {})
-    super(options.merge(include: :members, except: :password_digest))
+    super(options.merge(include: :members))
   end
 end

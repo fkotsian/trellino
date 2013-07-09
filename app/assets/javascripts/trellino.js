@@ -7,7 +7,7 @@ window.Trellino = {
 	  Trellino.boards = new Trellino.Collections.Boards();
 		var bootstrappedBoards = JSON.parse($("#bootstrapped_boards_json").html());
 		_(bootstrappedBoards).each(function (boardObject) {
-			Trellino.boards.add(boardObject);
+			Trellino.boards.add(boardObject, {parse: true});
 		});
     
 	  Trellino.lists = new Trellino.Collections.Lists();

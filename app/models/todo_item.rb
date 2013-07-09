@@ -1,5 +1,5 @@
 class TodoItem < ActiveRecord::Base
-  attr_accessible :title, :card_id
+  attr_accessible :title, :card_id, :done
   
   validates :title, :card, presence: true
   

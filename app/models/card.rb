@@ -13,6 +13,6 @@ class Card < ActiveRecord::Base
   accepts_nested_attributes_for :todo_items
   
   def as_json(options={})
-    super(options.merge(include: :todo_items))
+    super(options.merge({ include: [:todo_items, :users, :board] }))
   end
 end

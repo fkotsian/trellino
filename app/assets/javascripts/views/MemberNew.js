@@ -1,6 +1,7 @@
 Trellino.Views.MemberNew = Backbone.View.extend({
 	
 	// Model is the board receiving a new member.
+  // Collection is the user's boards.
 	
 	events: {
 		"click input[type='submit']": "add",
@@ -22,6 +23,7 @@ Trellino.Views.MemberNew = Backbone.View.extend({
 		event.preventDefault();
 		var newMemberEmail = $('form').serializeJSON().new_member_email;
     this.model.save({ 'newMemberEmail': newMemberEmail });
+		this.collection.trigger('add');
 	},
 	
 	cancel: function (event) {

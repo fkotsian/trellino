@@ -94,13 +94,14 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       var $placeholder = this.$el.find('li.placeholder');
       $placeholder.removeClass('hidden');
     }
+    
     $(listItems).each(function (index, item) {
       if ($(item).hasClass("placeholder")) {
         null
       } else {
         var card = Trellino.cards.get($(item).data('id'));
         card.set({ rank: index + 1 });
-        card.save({silent: true}); // doesn't work!
+        card.save({silent: true});
       }
     })
   }

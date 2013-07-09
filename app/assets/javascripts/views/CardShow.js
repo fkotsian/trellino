@@ -14,16 +14,20 @@ Trellino.Views.CardShow = Backbone.View.extend({
 		"click button.closeCard": "closeCard",
     "click input[type='checkbox']": "checkBox",
     "click button.newTodo": "newTodo",
-    "click button.deleteTodo": "deleteTodo"
+    "click button.deleteTodo": "deleteTodo",
+    "click button.newUser": "newUser",
+    "click button.removeUser": "removeUser"
 	},
 	
 	template: JST['cards/show'],
 		
   render: function () {
 		var that = this;
+
     var renderedContent = this.template({
 			card: this.model,
-      todoItems: this.model.get('todo_items')
+      todoItems: this.model.get('todo_items'),
+      users: this.model.get('users'),
     });
     this.$el.html(renderedContent);
 		
@@ -31,6 +35,7 @@ Trellino.Views.CardShow = Backbone.View.extend({
   },
   
   editCard: function (event) {
+    console.log('editing');
     var cardProp = $(event.currentTarget).attr('data-id');
     
     if (cardProp == "todo_items") {
@@ -55,10 +60,7 @@ Trellino.Views.CardShow = Backbone.View.extend({
     var itemID = $(event.target).data('id');
     var item = this.collection.get(itemID);
     var itemDone = !(item.get('done'));
-    console.log(itemDone);
-    item.set({ done: itemDone }); // somehow doesn't change the attr
-    console.log(item);
-    item.save(null, { silent: true });
+    item.save({ done: itemDone }, { silent: true });
   },
   
   newTodo: function (event) {
@@ -76,6 +78,31 @@ Trellino.Views.CardShow = Backbone.View.extend({
     item.destroy();
     this.collection.remove(itemID);
     this.collection.trigger('sync');
+  },
+  
+  newUser: function (event) {
+    var newUserView = new Trellino.Views.CardUserNew({
+      model: this.model
+    });
+    $(event.target).toggleClass('hidden');
+    this.$el.find("ul.user_list").append(newUserView.render().$el);
+  },
+  
+  removeUser: function (event) {
+    var that = this;
+    var cardUsers = this.model.get('users');
+    var userID = $(event.target).data('id');
+    var user = cardUsers.get(userID);
+    
+    $.ajax({
+      url: "card_assignments/1",
+      type: 'DELETE',
+      data: { userID: userID, cardID: this.model.id },
+      success: function (data) {
+        cardUsers.remove(user);
+        that.model.trigger('sync');
+      }
+    })
   }
   
 });
