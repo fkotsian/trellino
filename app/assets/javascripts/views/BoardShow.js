@@ -26,8 +26,13 @@ Trellino.Views.BoardShow = Backbone.View.extend({
       lists: this.collection,
       members: boardMembers
     });
-    this.$el.html(renderedContent);
     
+    this.$el.addClass('flexwidth');
+    var flexwidth = (this.collection.length > 1 ? 270 * this.collection.length : 280);
+    this.$el.outerWidth(flexwidth);
+        
+    this.$el.html(renderedContent);
+        
     this.$('ul.list_list').sortable({
       tolerance: 'pointer',
       start: function (event, ui) {
@@ -95,8 +100,15 @@ Trellino.Views.BoardShow = Backbone.View.extend({
   },
   
   deleteBoard: function (event) {
+    var boardID = this.model.id;
     this.model.destroy({
       success: function () {
+        var dependentLists = Trellino.lists.where({ board_id: boardID });
+        _(dependentLists).each(function (list) {
+          list.cards.each(function (card) {
+            Trellino.cards.remove(card);
+          });
+        });
         Trellino.boardsRouter.navigate('#', { trigger: true });
       }
     });

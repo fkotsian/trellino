@@ -3,7 +3,7 @@ window.Trellino = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function () {
+  initialize: function () {    
     
     Trellino.myID = parseInt($("#bootstrapped_user_id").html());
     
@@ -12,6 +12,49 @@ window.Trellino = {
 		_(bootstrappedBoards).each(function (boardObject) {
 			Trellino.boards.add(boardObject, {parse: true});
 		});
+    
+    
+    $('ul.nav').append("\
+    <li class='dropdown'>\
+      <a\
+        class='dropdown-toggle'\
+        id='dLabel'\
+        role='button'\
+        data-toggle='dropdown' data-target='#'\
+        href='#'\
+      >\
+      My Boards\
+      <b class='caret'></b>\
+      </a>\
+      <ul\
+        class='dropdown-menu'\
+        id='boards-menu'\
+        role='menu'\
+        aria-labelledby='dLabel'\
+      >\
+      </ul>\
+    </li>\
+    <li>\
+      <a href='#/cards'>My Cards</a>\
+    </li>\
+    ")
+        
+    Trellino.boards.each(function (board) {
+      $('#boards-menu').append("<li>" +
+                              "<a href='#boards/" +
+                              board.id + "'>" +
+                              board.escape('title') +
+                              "</a></li>");
+    });
+    
+    $('#boards-menu').append("<li class='divider'></li>");
+    $('#boards-menu').append("<li><a href='#'>See All</a></li>");
+    $('#boards-menu').append("<li><a href='#boards/new'>New Board</a></li>");
+    
+    $('.dropdown-toggle').on('click', function (event) {
+      $('.dropdown-toggle').dropdown();
+    });
+    
     
 	  Trellino.lists = new Trellino.Collections.Lists();
 		var bootstrappedLists = JSON.parse($("#bootstrapped_lists_json").html());

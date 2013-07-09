@@ -7,21 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <span class="title">Trellino</span>
-  <div class="container">
-    <header class="row">
-      <div class="span4">
-        <nav class="navbar">
-          <div class="navbar-inner">
-            <ul class="nav">
-              <li><a href="#">My Boards</a></li>
-              <li><a href="#/cards">My Cards</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
-  </div>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li>
+          <span class="title">Trellino</span>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <%= yield %>
 
 <div class="overlay hidden">
