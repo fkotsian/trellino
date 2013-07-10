@@ -15,9 +15,10 @@ Trellino.Views.CardsUserIndex = Backbone.View.extend({
 	},
 	
 	events: {
+    "mouseover li.card_entry": "addDeleteButton",
+    "mouseleave li.card_entry": "removeDeleteButton",
     "click li.card_entry": "showCard",
-    "mouseover li.card_entry": "showDelete",
-		"click button.deleteCard": "deleteCard"
+		"click span.deleteCard": "deleteCard"
 	},
 	
 	template: JST['cards/user_index'],
@@ -41,6 +42,7 @@ Trellino.Views.CardsUserIndex = Backbone.View.extend({
   showCard: function (event) {
     var cardID = $(event.target).attr('data-id');
     var selectedCard = Trellino.cards.get(cardID);
+    if (!selectedCard) {return;}
     var cardShowView = new Trellino.Views.CardShow({
       model: selectedCard,
       collection: selectedCard.get('todo_items')
@@ -50,8 +52,12 @@ Trellino.Views.CardsUserIndex = Backbone.View.extend({
     $('.overlay').append(cardShowView.render().$el);
   },
   
-  showDelete: function (event) {
-    $(event.target).find('button.deleteCard').toggleClass('hidden');
+  addDeleteButton: function (event) {
+    $(event.target).find('span.deleteCard').removeClass('hidden');
+  },
+
+  removeDeleteButton: function (event) {
+    $(event.target).find('span.deleteCard').addClass('hidden');
   },
   
 	deleteCard: function (event) {

@@ -27,6 +27,10 @@ span.title {
   font-style: italic;
 }
 
+input#logout, input#logout{
+  background-color: white;
+}
+
 div#content {
   background-color: white;
   margin:0px auto;
@@ -65,4 +69,15 @@ li {
 
 input[type="text"] {
   width: inherit;
+}
+
+button, input[type="submit"] {
+  background: transparent;
+  border: 1px dotted;
+  border-radius: 8px;
+}
+
+button:hover, input[type="submit"]:hover {
+  font-weight: 800;
+  background-color: transparent;
 }

@@ -37,6 +37,16 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       tolerance: 'pointer',
       connectWith: "ul.card_list",
       start: function (event, ui) {
+        var listItems = $(event.target).find('li');
+        var length = listItems.length;
+        
+        console.log(listItems);
+        
+        if (length === 3) {
+          var $placeholder = that.$el.find('li.placeholder');
+          $placeholder.removeClass('hidden');
+        }
+        
         $(ui.item).toggleClass('dragged');
         var cardHeight = $(ui.item).height();
         var cardWidth = $(ui.item).width();
@@ -98,12 +108,6 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
   
   _realignList: function ($ul) {
     var listItems = $ul.find('li');
-    var length = listItems.length;
-    
-    if (length === 1) {
-      var $placeholder = this.$el.find('li.placeholder');
-      $placeholder.removeClass('hidden');
-    }
     
     $(listItems).each(function (index, item) {
       if ($(item).hasClass("placeholder")) {
@@ -111,7 +115,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
       } else {
         var card = Trellino.cards.get($(item).data('id'));
         card.set({ rank: index + 1 });
-        card.save({silent: true});
+        card.save({ silent: true });
       }
     })
   }

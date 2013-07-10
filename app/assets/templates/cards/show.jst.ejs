@@ -13,8 +13,8 @@
         Todo Items
         <ul class="todo_list">
           <% todoItems.each(function (item) { %>
-            <li>
-              <label for="item_<%= item.id %>">
+            <li class="item_entry">
+              <label for="item_<%= item.id %>" class="todo_label">
               
                 <%= item.escape('title') %>
               
@@ -28,11 +28,11 @@
                 >
               
               </label>
-              <button class="deleteTodo btn" data-id="<%= item.id %>">X</button>
+              <span class="deleteTodo icon-trash hidden" data-id="<%= item.id %>" ></span>
             </li>
           <% }) %>
           <li>
-            <button class="newTodo btn">New Todo</button>
+            <button class="newTodo">New Todo</button>
           </li>
         </ul>
       </li>
@@ -44,16 +44,16 @@
           <% users.each(function (user) { %>
             <li>
               <%= user.get('email') %>
-              <button class="removeUser btn" data-id="<%= user.id %>">X</button>
+              <button class="removeUser" data-id="<%= user.id %>">X</button>
             </li>
           <% }) %>
           <li>
-            <button class="newUser btn">Assign a User</button>
+            <button class="newUser">Assign a User</button>
           </li>
         </ul>
       </li>
     </span>
     </ul>
     <br>
-  <button class="closeCard btn">X</a>
+  <button class="closeCard">X</a>
 </div>

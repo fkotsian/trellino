@@ -20,6 +20,7 @@ Trellino.Views.BoardNew = Backbone.View.extend({
 		event.preventDefault();
 		var newBoardAttrs = $('form').serializeJSON().board;
 		this.collection.create(newBoardAttrs, {
+      wait: true,
 			success: function (savedBoard) {
 				var newBoardURL = "#boards/" + savedBoard.id;
         Trellino.boardsRouter.navigate(newBoardURL, { trigger: true });

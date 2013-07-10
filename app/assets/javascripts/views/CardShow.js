@@ -14,7 +14,9 @@ Trellino.Views.CardShow = Backbone.View.extend({
 		"click button.closeCard": "closeCard",
     "click input[type='checkbox']": "checkBox",
     "click button.newTodo": "newTodo",
-    "click button.deleteTodo": "deleteTodo",
+    "mouseover li.item_entry": "addDeleteButton",
+    "mouseleave li.item_entry": "removeDeleteButton",
+    "click span.deleteTodo": "deleteTodo",
     "click button.newUser": "newUser",
     "click button.removeUser": "removeUser"
 	},
@@ -70,6 +72,15 @@ Trellino.Views.CardShow = Backbone.View.extend({
     $(event.target).toggleClass('hidden');
     this.$el.find("ul.todo_list").append(newTodoView.render().$el);
   },
+  
+  addDeleteButton: function (event) {
+    $(event.target).find('span.deleteTodo').removeClass('hidden');
+  },
+
+  removeDeleteButton: function (event) {
+    $(event.target).find('span.deleteTodo').addClass('hidden');
+  },
+  
   
   deleteTodo: function (event) {
     var itemID = $(event.target).data('id');

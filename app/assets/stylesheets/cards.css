@@ -34,11 +34,34 @@ li.card_entry {
 
 li.placeholder {
   font-size: 15px;
-  font-weight: 700;
+  font-style: italic;
 }
 
 ul.todo_list {
-  list-style-type: square !important;
+  list-style-type: circle !important;
+}
+
+label.todo_label {
+  display: inline;
+  margin: 2px;
+  padding-right: 10px;
+}
+
+span.newTodo {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  padding: 3px;
+  font-size: 12px;
+}
+
+span.newTodo:hover {
+  font-style: italic;
+}
+
+ul.user_list {
+  list-style-type: circle !important;
 }
 
 div.board_members {
