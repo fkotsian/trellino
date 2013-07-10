@@ -8,8 +8,9 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	},
 	
 	events: {
-    "mouseover li.card_entry": "showDelete",
-		"click button.deleteCard": "deleteCard",
+    "mouseover li.card_entry": "addDeleteButton",
+    "mouseleave li.card_entry": "removeDeleteButton",
+		"click span.deleteCard": "deleteCard",
 		"click button.addCard": "addCard"
 	},
 	
@@ -65,10 +66,14 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
     return this;
   },
   
-  showDelete: function (event) {
-    $(event.target).find('button.deleteCard').toggleClass('hidden');
+  addDeleteButton: function (event) {
+    $(event.target).find('span.deleteCard').removeClass('hidden');
   },
-		
+
+  removeDeleteButton: function (event) {
+    $(event.target).find('span.deleteCard').addClass('hidden');
+  },
+
 	addCard: function (event) {
 		var that = this;
     $(event.target).remove();

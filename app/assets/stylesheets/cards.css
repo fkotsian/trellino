@@ -69,6 +69,8 @@ li.dragged {
   width: 30%;
 }
 
-button.deleteCard {
-  background-color: transparent;
+span.deleteCard {
+  margin-right: 9px;
+  float: right;
+  
 }
