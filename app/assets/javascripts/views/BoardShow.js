@@ -26,10 +26,6 @@ Trellino.Views.BoardShow = Backbone.View.extend({
       lists: this.collection,
       members: boardMembers
     });
-    
-    this.$el.addClass('flexwidth');
-    var flexwidth = (this.collection.length > 1 ? 270 * this.collection.length : 280);
-    this.$el.outerWidth(flexwidth);
         
     this.$el.html(renderedContent);
         
@@ -52,7 +48,10 @@ Trellino.Views.BoardShow = Backbone.View.extend({
 			var $cardsViewEl = cardsIndexView.render().$el;
 			that.$el.find('li#list_' + list.id).append($cardsViewEl);
 		});
-
+    
+    var flexwidth = (this.collection.length > 1 ? 270 * this.collection.length : 280);
+    this.$el.find('#list_index').outerWidth(flexwidth);
+    
     return this;
   },
 	

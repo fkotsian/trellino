@@ -7,6 +7,7 @@
   <% cards.each(function (card) { %>
     <li
       class="card_entry"
+      id="card_<%= card.id %>"
       data-id="<%= card.id %>"
       data-list_id="<%= card.escape('list_id') %>"
     >

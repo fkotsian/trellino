@@ -97,6 +97,7 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
 	deleteCard: function (event) {
 		var cardID = $(event.target).attr('data-id');
 		var cardToDelete = this.collection.get(cardID);
+
 		cardToDelete.destroy();
 		this.collection.remove(cardToDelete);
     if (this.collection.length == 0) {
