@@ -40,8 +40,6 @@ Trellino.Views.CardsIndex = Backbone.View.extend({
         var listItems = $(event.target).find('li');
         var length = listItems.length;
         
-        console.log(listItems);
-        
         if (length === 3) {
           var $placeholder = that.$el.find('li.placeholder');
           $placeholder.removeClass('hidden');

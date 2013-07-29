@@ -62,7 +62,7 @@ Trellino.Views.BoardShow = Backbone.View.extend({
       model: this.model,
       collection: this.collection
 		});
-		$(event.target).parent().append(newListView.render().$el);
+		this.$el.find('#listAdder').append(newListView.render().$el);
 	},
   
   renameList: function (event) {

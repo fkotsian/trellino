@@ -26,6 +26,7 @@ Trellino.Views.ListNew = Backbone.View.extend({
     var that = this;
     event.preventDefault();
     var newListAttrs = $('form').serializeJSON().list;
+    console.log(newListAttrs);
     this.collection.create(newListAttrs, {
       wait: true,
       success: function (data) {
