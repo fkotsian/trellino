@@ -58,7 +58,8 @@ button.newList {
   margin: 10px 0;
 }
 
-button.deleteBoard {
+
+button#deleteBoard {
   margin: 10px 22px;
 }
 
