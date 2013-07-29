@@ -50,6 +50,18 @@ div#content {
   padding: 30px;
 }
 
+div.board_members {
+  margin-left: 22px;
+}
+
+button.newList {
+  margin: 10px 0;
+}
+
+button.deleteBoard {
+  margin: 10px 22px;
+}
+
 a {
   text-decoration: none !important;
   font-weight: 600;
