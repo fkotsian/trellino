@@ -6,11 +6,11 @@ I built Trellino to practice making single-page Backbone.js apps. I completed th
 
 == Features
 
-1. Boards contain lists of cards.
-2. Lists and cards are easily renamed.
-3. Lists and cards can be re-ordered using drag and drop.
-4. Cards contain additional information, such as descriptions and to-do list.
-5. Users can invite each other to collaborate on boards. Cards can be assigned to their boards' collaborators.
+* Boards contain lists of cards.
+* Lists and cards are easily renamed.
+* Lists and cards can be re-ordered using drag and drop.
+* Cards contain additional information, such as descriptions and to-do list.
+* Users can invite each other to collaborate on boards. Cards can be assigned to their boards' collaborators.
 
 
 == Technologies
