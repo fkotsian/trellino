@@ -55,3 +55,4 @@ Start out by looking at the skeleton provided for you. In this project, you'll d
 
 ## TODO for Buck
 * Check how the Draggable stuff works in a bit more detail. Check how it interacts with deleting stuff.
+* Question: Should I have more JS futzing like the delete button modal?
