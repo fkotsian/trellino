@@ -1,20 +1,20 @@
 # Trello project!
 
-Over the next few days, we're going to clone Trello. (This project was based off Simon Chaffetz's final project, which he called [Trellino](http://trellino.herokuapp.com/) so we could perhaps call it a Trellino clone.)
+Over the next few days, we're going to clone Trello. (This project was based off Simon Chaffetz's final project, which he called [Trellino](http://trellino.herokuapp.com/). So we should perhaps call it a Trellino clone instead.)
 
-We've already provided authentication and a Rails API for you, so you just have to build the one page app. I just stole the API from Trellino, so you should look at that to get an idea of the functionality before each step.
+We've already provided authentication and a Rails API for you, so you just have to build the Backbone app. I just stole the API from Trellino, so you should look at that to get an idea of the functionality before each step.
 
-Start out by looking at the skeleton provided for you. You'll probably look at the models in the following order: boards, lists, cards, todo items, then card assignments. Lists and cards have a rank attribute: this is the order they're shown in. By the end of this project, you'll be able to edit their order by dragging and dropping them, thanks to jQuery UI.
+Start out by looking at the skeleton provided for you. In this project, you'll deal with the models in the following order: boards, lists, cards, todo items, and card assignments. Lists and cards have a rank attribute: this corresponds to the order they're shown in. By the end of this project, you'll be able to edit their order by dragging and dropping them, using jQuery UI.
 
 ## Phase I: Board Index
 
-* Start up Backbone
+* Start up Backbone. Remember to check that you're getting that annoying "Hello from Backbone" alert.
+  * Remember to put `serializeJSON.js` in your project's assets/javascripts directory.
   * Make your Backbone model and collection for boards.
   * Make a trello.js file in your javascripts folder. In it, initialize Backbone.
-  * Test out your Backbone model: if you use its `save` method, does that save the model to the database?
+  * Test out your Backbone model: if you use its `save` method, it should the model to the database.
 * Build a `BoardsIndex` view class. Its `render` function should put an unordered list of our boards on the page.
-* Add a router: map "/" to the `BoardsIndex` class. At this point, you should be able to see all your boards on your index page.
-* Add a delete button for each board. Make the view refresh after you delete boards.
+* Add a Backbone router: map "/" to the `BoardsIndex` class. At this point, you should be able to see all your boards on your index page.
 * Add a new board view class, so that you can create boards.
 
 ## Phase II: Board Show and Lists
@@ -25,13 +25,16 @@ Start out by looking at the skeleton provided for you. You'll probably look at t
 * When the user creates a board, it should redirect them to the board's show page. You can use the router's `navigate` method for this.
 * Add the ability to create lists, via a new list view.
 * Add the ability to add board members. You should be able to type in a username and the website will add that person, or complain that they don't exist.
-* Add a button to delete the board.
+* Add a button to delete the board. When you click the 'delete' button, a modal should pop down asking if you're sure you want to delete the board. Do this by displaying two divs.
+  * The first div is to grey out the rest of the window. Just make it have a fixed height and width of 100%, and give it a semitransparent black color.
+  * On top of that div, make a centered div which has a button to confirm the deletion of the board.
+  * You can get advice on this part of the process from [this tutorial](http://www.jacklmoore.com/notes/jquery-modal-tutorial/).
 
 ## Phase III: Cards (finally!)
 
 * Make your board show page also show the cards for each list. You'll want to do this by adding functionality to the BoardShow.js render method. Again, remember to order them by rank, by overwriting the default comparator method.
 * Make the lists appear next to each other by making each inside a div which you give the CSS setting `float: left`.
-* Add the ability to create and delete cards. The card deletion should be accomplished by a button for each card which only appears when you're hovering over the card. Use the JQuery hover event to get this effect.
+* Add the ability to create and delete cards for each list. *TODO: elaborate on how to do this in Backbone.* The card deletion should be accomplished by a button for each card which only appears when you're hovering over the card. Use the JQuery hover event to get this effect.
 
 ## Phase IV: Javascript prettiness!
 
@@ -42,11 +45,11 @@ Start out by looking at the skeleton provided for you. You'll probably look at t
 
 ## Phase V: Card modal view
 
-* We want to make a modal view to focus on a particular card. To do this, we'll create an on click event for our cards. When you click on a card, it should make the rest of the window get greyed out, and also show the details of the card. Do this by displaying two divs.
-  * The first div is to grey out the rest of the window. Just make it have a fixed height and width of 100%, and give it a semitransparent black color.
-  * On top of that div, make a centered div which shows the details of the card.
+* We want to make a modal view to focus on a particular card. Refer to the advice included in part II on making modals.
 * Within the card modal, we want to show to-do items.
   * To-do items can be created and deleted, and each has a checkbox whose state should be saved to the server whenever it is changed.
 * Also, we want assigned users.
   * Cards have an arbitrary number of assigned users. Note that you only want to give the option of adding users who haven't already been added.
 
+## TODO for Buck
+* Check how the Draggable stuff works in a bit more detail. Check how it interacts with deleting stuff.
