@@ -25,10 +25,7 @@ Start out by looking at the skeleton provided for you. In this project, you'll d
 * When the user creates a board, it should redirect them to the board's show page. You can use the router's `navigate` method for this.
 * Add the ability to create lists, via a new list view.
 * Add the ability to add board members. You should be able to type in a username and the website will add that person, or complain that they don't exist.
-* Add a button to delete the board. When you click the 'delete' button, a modal should pop down asking if you're sure you want to delete the board. Do this by displaying two divs.
-  * The first div is to grey out the rest of the window. Just make it have a fixed height and width of 100%, and give it a semitransparent black color.
-  * On top of that div, make a centered div which has a button to confirm the deletion of the board.
-  * You can get advice on this part of the process from [this tutorial](http://www.jacklmoore.com/notes/jquery-modal-tutorial/).
+* Add a button to delete the board.
 
 ## Phase III: Cards (finally!)
 
@@ -42,6 +39,11 @@ Start out by looking at the skeleton provided for you. In this project, you'll d
 * First get that working on the client, and then send the result back to the server.
 * To make it prettier, you can give the cards a `.dragged` CSS style which rotates them slightly and gives them a shadow while they're being dragged.
 * While we're making things pretty, change your forms so that if you enter invalid input, for example by not giving a card a name before creating it, the input element flashes. Use the jQuery UI [Highlight effect](https://api.jqueryui.com/highlight-effect/) for this.
+* Also, go back to your Board show page. We want to make it harder to delete your board by accident. So when you click the 'delete' button, a [modal](http://getbootstrap.com/javascript/#modals) should pop down asking if you're sure you want to delete the board. Make this modal by displaying two divs:
+  * The first div is to grey out the rest of the window. Just make it have a fixed height and width of 100%, and give it a semitransparent black color.
+  * On top of that div, make a centered div which has a button to confirm the deletion of the board.
+  * I know that Bootstrap has modals built in, but build this from scratch anyway.
+  * You can get advice on this part of the process from [this tutorial](http://www.jacklmoore.com/notes/jquery-modal-tutorial/).
 
 ## Phase V: Card modal view
 
