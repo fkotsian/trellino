@@ -1,14 +1,14 @@
 Trellino.Views.CardNew = Backbone.View.extend({
-	
+
 	// Model is the list receiving a new card. Collection is the list's cards.
-	
+
 	events: {
 		"click input[type='submit']": "create",
 		"click button.cancel": "cancel"
 	},
-	
+
 	template: JST['cards/new'],
-		
+
   render: function () {
 		var newCardRank = this.collection.models.length + 1;
     var renderedContent = this.template({
@@ -21,7 +21,7 @@ Trellino.Views.CardNew = Backbone.View.extend({
 
     return this;
   },
-	
+
 	create: function (event) {
 		var that = this;
 		event.preventDefault();
@@ -36,7 +36,7 @@ Trellino.Views.CardNew = Backbone.View.extend({
       }
     });
 	},
-	
+
 	cancel: function (event) {
 		event.preventDefault();
 		this.collection.trigger('add');

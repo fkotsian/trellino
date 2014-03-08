@@ -2,8 +2,9 @@ Trellino.Models.List = Backbone.Model.extend({
   initialize: function () {
     this.cards = new Trellino.Collections.Cards();
   },
-  
+
   normalizeRanks: function (deletedCard, collection) {
+    console.log("HEY THERE BROTHER")
     var deletedCardRank = deletedCard.get('rank');
     if (deletedCardRank === collection.models.length + 1) {
       return
@@ -17,5 +18,5 @@ Trellino.Models.List = Backbone.Model.extend({
       });
     }
   }
-  
+
 });
