@@ -9,7 +9,7 @@ Start out by looking at the skeleton provided for you. In this project, you'll d
 ## Phase I: Board Index
 
 * Start up Backbone. Remember to check that you're getting that annoying "Hello from Backbone" alert.
-  * Remember to put `serializeJSON.js` in your project's assets/javascripts directory.
+  * Remember to put `serializeJSON.js` in your project's assets/javascripts directory. (Alternatively, try out [this gem](http://rubygems.org/gems/serialize_json-rails)
   * Make your Backbone model and collection for boards.
   * Make a trello.js file in your javascripts folder. In it, initialize Backbone.
   * Test out your Backbone model: if you use its `save` method, it should the model to the database.
