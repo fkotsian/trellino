@@ -2,6 +2,8 @@
 
 Over the next few days, we're going to clone Trello. (This project was based off Simon Chaffetz's final project, which he called [Trellino](http://trellino.herokuapp.com/). So we should perhaps call it a Trellino clone instead.)
 
+We're giving you this project partially to give you practise building stuff on your own. This means that ~~I don't have to check these instructions well~~ you'll have to think of stuff on your own.
+
 We've already provided authentication and a Rails API for you, so you just have to build the Backbone app. I just stole the API from Trellino, so you should look at that to get an idea of the functionality before each step.
 
 Start out by looking at the skeleton provided for you. In this project, you'll deal with the models in the following order: boards, lists, cards, todo items, and card assignments. Lists and cards have a rank attribute: this corresponds to the order they're shown in. By the end of this project, you'll be able to edit their order by dragging and dropping them, using jQuery UI.
