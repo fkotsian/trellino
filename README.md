@@ -53,6 +53,6 @@ Start out by looking at the skeleton provided for you. In this project, you'll d
 * Also, we want assigned users.
   * Cards have an arbitrary number of assigned users. Note that you only want to give the option of adding users who haven't already been added.
 
-## TODO for Buck
-* Check how the Draggable stuff works in a bit more detail. Check how it interacts with deleting stuff.
-* Question: Should I have more JS futzing like the delete button modal?
+## Bonus round
+
+* Add Javascript prettiness everywhere. Make modals to confirm that you actually want to delete things. Think of more pretty things to do, then do them and add them to these instructions.
