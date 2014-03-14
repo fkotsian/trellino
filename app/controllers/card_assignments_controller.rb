@@ -9,4 +9,9 @@ class CardAssignmentsController < ApplicationController
     render json: nil
   end
   
+
+  private
+  def card_assignment_params
+    params.require(:card_assignment).permit(:user_id, :card_id)
+  end
 end

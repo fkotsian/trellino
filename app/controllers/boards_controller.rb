@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
   end
   
   def create
-    @board = current_user.boards.build(params[:board])
+    @board = current_user.boards.build(board_params)
     
     if @board.save
       render json: @board
@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
   
   def update
     @board = Board.find(params[:id])
-    @board.update_attributes(params[:board])
+    @board.update_attributes(board_params)
     
     if params[:newMemberEmail]
       email = params[:newMemberEmail]
@@ -51,4 +51,9 @@ class BoardsController < ApplicationController
     render json: nil
   end
   
+
+  private
+  def board_params
+    params.require(:board).permit(:title, :description)
+  end
 end

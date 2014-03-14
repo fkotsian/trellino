@@ -1,5 +1,4 @@
 class BoardAssignment < ActiveRecord::Base
-  attr_accessible :user_id, :board_id
   
   validates :user, :board, presence: true
   

@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   end
   
   def create
-    @list = List.new(params[:list])
+    @list = List.new(list_params)
     
     if @list.save
       render json: @list
@@ -22,7 +22,7 @@ class ListsController < ApplicationController
   
   def update
     @list = List.find(params[:id])
-    @list.update_attributes(params[:list])
+    @list.update_attributes(list_params)
     
     if @list.save
       render json: @list
@@ -35,5 +35,10 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.destroy
     render json: nil
+  end
+
+  private
+  def list_params
+    params.require(:list).permit(:title, :rank, :board_id)
   end
 end

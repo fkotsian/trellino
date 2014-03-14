@@ -1,5 +1,4 @@
 class CardAssignment < ActiveRecord::Base
-  attr_accessible :user_id, :card_id
   
   validates :user, :card, presence: true
   

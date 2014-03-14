@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   
   def create
-    @card = Card.new(params[:card])
+    @card = Card.new(card_params)
     
     if @card.save
       render json: @card
@@ -12,7 +12,7 @@ class CardsController < ApplicationController
   
   def update
     @card = Card.find(params[:id])
-    @card.update_attributes(params[:card])
+    @card.update_attributes(card_params)
     
     if params[:newUserEmail]
       email = params[:newUserEmail]
@@ -33,4 +33,9 @@ class CardsController < ApplicationController
     render json: nil
   end
   
+
+  private
+  def card_params
+    params.require(:card).permit(:title, :description, :rank, :list_id)
+  end
 end
