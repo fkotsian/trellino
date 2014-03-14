@@ -17,11 +17,11 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
 gem 'jquery-ui-rails'
 gem 'backbone-on-rails'
 gem 'rake', '10.1.1'
 gem 'bcrypt-ruby', '~> 3.0.0'
-
 group :development, :test do
   gem 'rspec-rails'
 end
