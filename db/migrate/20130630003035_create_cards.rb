@@ -4,7 +4,6 @@ class CreateCards < ActiveRecord::Migration
       t.string :title, null: false
       t.text :description
       t.integer :rank, null: false
-      
       t.timestamps
     end
   end

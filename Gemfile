@@ -22,7 +22,7 @@ end
 gem 'jquery-ui-rails'
 gem 'backbone-on-rails'
 gem 'rake', '10.1.1'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt'
 group :development, :test do
   gem 'rspec-rails'
 end
