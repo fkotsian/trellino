@@ -1,5 +1,4 @@
 class CardAssignmentsController < ApplicationController
-  
   def destroy
     user_id = params[:userID]
     card_id = params[:cardID]
@@ -8,7 +7,6 @@ class CardAssignmentsController < ApplicationController
     card_assignment.destroy
     render json: nil
   end
-  
 
   private
   def card_assignment_params
