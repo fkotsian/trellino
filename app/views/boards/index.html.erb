@@ -14,27 +14,3 @@
 	>
 	<input id="logout" type="submit" value="Log Out">
 </form>
-
-<script type="text/javascript">
-
-$(function () {
-	Trellino.initialize();
-	Trellino.authToken = "<%= form_authenticity_token %>";
-})
-</script>
-
-<script type="application/json" id="bootstrapped_boards_json">
-<%= @boards.to_json.html_safe %>
-</script>
-
-<script type="application/json" id="bootstrapped_lists_json">
-<%= @lists.to_json.html_safe %>
-</script>
-
-<script type="application/json" id="bootstrapped_cards_json">
-<%= @cards.to_json.html_safe %>
-</script>
-
-<script type="application/json" id="bootstrapped_user_id">
-<%= @myID %>
-</script>
