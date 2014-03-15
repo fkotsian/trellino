@@ -1,14 +1,21 @@
-<h1>Sign Up</h1>
-<form action="<%= users_url %>" method="POST">
-  <label>
-    Email
-    <input id="email" type="text" name="user[email]">
-  </label>
-  <label>
-    Password
-    <input id="password" type="password" name="user[password]">
-  </label>
-	<input type="submit" class="btn" value="Sign Up">
-</form>
+<div class="container">
+  <%= render "layouts/errors" %>
 
-<a href="<%= new_session_url %>">Back to Login</a>
+  <h1>Sign Up</h1>
+
+  <form action="<%= users_url %>" method="POST">
+    <%= auth_token_input %>
+    <label>
+      Email<br>
+      <input id="email" type="text" name="user[email]">
+    </label>
+    <br>
+    <label>
+      Password<br>
+      <input id="password" type="password" name="user[password]">
+    </label>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Sign Up">
+    <a href="<%= new_session_url %>">Back to Login</a>
+  </form>
+</div>

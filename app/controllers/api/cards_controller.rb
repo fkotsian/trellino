@@ -1,9 +1,19 @@
 module Api
   class CardsController < ApiController
+    def index
+      @cards = List.find(params[:list_id]).cards
+      render :index
+    end
+
+    def show
+      @card = Card.find(params[:id])
+      render partial: "api/cards/card", locals: { card: @card }
+    end
+
     def create
       @card = Card.new(card_params)
       if @card.save
-        render json: @card
+        render partial: "api/cards/card", locals: { card: @card }
       else
         render json: { errors: @card.errors.full_messages }, status: 422
       end
@@ -19,7 +29,7 @@ module Api
       end
 
       if @card.update_attributes(card_params)
-        render json: @card
+        render partial: "api/cards/card", locals: { card: @card }
       else
         render json: { errors: @card.errors.full_messages }, status: 422
       end

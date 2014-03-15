@@ -1,25 +1,19 @@
 module Api
   class BoardsController < ApiController
-
     def index
-      @boards = Board.includes(:lists, :cards).for_member(current_user)
-      @lists = []
-      @boards.each { |board| @lists << board.lists }
-      @cards = []
-      @boards.each { |board| @cards << board.cards }
-      @myID = current_user.id
-      render json: @boards
+      @boards = Board.includes(:lists, :cards).all
+      render :index
     end
 
     def show
       @board = Board.find(params[:id])
-      render json: @board
+      render partial: "api/boards/board", locals: { board: @board }
     end
 
     def create
       @board = current_user.boards.build(board_params)
       if @board.save
-        render json: @board
+        render partial: "api/boards/board", locals: { board: @board }
       else
         render json: { errors: @board.errors.full_messages }, status: 422
       end
@@ -35,7 +29,7 @@ module Api
       end
 
       if @board.update_attributes(board_params)
-        render json: @board
+        render partial: "api/boards/board", locals: { board: @board }
       else
         render json: { errors: @board.errors.full_messages }, status: 422
       end
@@ -48,7 +42,7 @@ module Api
 
     private
     def board_params
-      params.require(:board).permit(:title, :description)
+      params.require(:board).permit(:title)
     end
   end
 end

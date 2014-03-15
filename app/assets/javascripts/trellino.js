@@ -3,6 +3,5 @@ window.Trellino = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function () {    
-  }
+  initialize: function () {}
 };

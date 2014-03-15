@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
+gem 'annotate'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
@@ -23,6 +24,7 @@ gem 'jquery-ui-rails'
 gem 'backbone-on-rails'
 gem 'rake', '10.1.1'
 gem 'bcrypt'
+
 group :development, :test do
   gem 'rspec-rails'
 end
