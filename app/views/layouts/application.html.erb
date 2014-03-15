@@ -15,16 +15,14 @@
       <ul class="nav navbar-right">
         <li>
           <% if logged_in? %>
-          <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-xs btn-warning" } %>
+            <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-xs btn-warning" } %>
           <% end %>
         </li>
       </ul>
     </div>
   </nav>
-  <%= yield %>
 
-<div class="overlay hidden">
-</div>
+  <%= yield %>
 
 </body>
 </html>
