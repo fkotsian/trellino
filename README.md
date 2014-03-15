@@ -42,7 +42,7 @@ Make the show, index, and new page for boards. Next, add lists to the boards. Th
 
 * Make your board show page also show the cards for each list. You'll want to do this by adding functionality to the BoardShow.js render method. Again, remember to order them by rank, by overwriting the default comparator method.
 * Make the lists appear next to each other by making each inside a div which you give the CSS setting `float: left`.
-* Add the ability to create and delete cards for each list. *TODO: elaborate on how to do this in Backbone.* The card deletion should be accomplished by a button for each card which only appears when you're hovering over the card. Use the JQuery hover event to get this effect.
+* Add the ability to create and delete cards for each list. The card deletion should be accomplished by a button for each card which only appears when you're hovering over the card. Use the JQuery hover event to get this effect.
 
 ### Phase IV: Javascript prettiness!
 
