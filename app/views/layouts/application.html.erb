@@ -16,6 +16,8 @@
         <li>
           <% if logged_in? %>
             <%= button_to "Log out", session_url, { method: :delete, class: "btn btn-xs btn-warning" } %>
+          <% else %>
+            <%= link_to "Sign In", new_session_url, class: 'btn btn-primary'%>
           <% end %>
         </li>
       </ul>

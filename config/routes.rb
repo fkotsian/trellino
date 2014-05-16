@@ -17,4 +17,7 @@ Trellino::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :destroy]
+
+  get '/signin', to: 'sessions#new'
+  get '/signup', to: 'users#new'
 end
