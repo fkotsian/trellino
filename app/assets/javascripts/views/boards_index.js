@@ -1,9 +1,14 @@
 Trellino.Views.BoardsIndexView = Backbone.View.extend({
+
+  template: JST['boards/index'],
+
+  initialize: function() {
+    this.listenTo(this.collection, 'sync', this.render);
+  },
+
   events: {
     'click .new-board-link': 'newBoard'
   },
-
-  template: JST['boards/index'],
 
   render: function() {
     var indexContent = this.template();

@@ -1,6 +1,6 @@
 Trellino.Collections.Lists = Backbone.Collection.extend({
   model: Trellino.Models.List,
-  url: '/boards/:board_id/lists',
+  url: 'api/boards/:board_id/lists',
 
   tagName: 'ul',
   className: 'board-list',
