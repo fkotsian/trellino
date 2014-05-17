@@ -1,3 +1,14 @@
 <h1>Create a New Board</h1>
-<form>
+<br>
+
+<form action='/boards' method='POST' accept-charset="utf-8">
+  <label>Title<br>
+    <input type="text" name="board[title]" value="" id="board_title">
+  </label>
+  <br>
+
+  <input type="submit" value="Create New Board" id="board-create-button">
 </form>
+
+<br>
+<a href=''>Back to Boards</a>

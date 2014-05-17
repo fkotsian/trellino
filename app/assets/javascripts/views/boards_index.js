@@ -1,6 +1,6 @@
 Trellino.Views.BoardsIndexView = Backbone.View.extend({
   events: {
-    'click .new-board-link': 'navigateToNewBoard',
+    'click .new-board-link': 'newBoard'
   },
 
   template: JST['boards/index'],
@@ -11,14 +11,17 @@ Trellino.Views.BoardsIndexView = Backbone.View.extend({
 
     var that = this;
     this.collection.each(function(board){
-      that.$el.find('#boards-list').append("<li>" + board.escape('title') + "</li>");
+      var board_link_address = "#/boards/" + board.get('id');
+      that.$el.find('#boards-list').append(
+        "<li><a href=" + board_link_address + ">" +
+          board.escape('title') + "</a></li>");
     });
 
     return this;
   },
 
-  navigateToNewBoard: function(event) {
-    Trellino.AppRouter.navigateTo('/new_board');
-  },
+  newBoard: function(event) {
+    Trellino.router.navigate('/boards/new', { trigger: true });
+  }
 
 });

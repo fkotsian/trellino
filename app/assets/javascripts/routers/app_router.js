@@ -5,7 +5,8 @@ Trellino.Routers.AppRouter = Backbone.Router.extend({
 
   routes: {
     '': 'boardsIndex',
-    '/boards/new': 'newBoard'
+    'boards/new': 'newBoard',
+    'boards/:id': 'showBoard'
   },
 
   boardsIndex: function(){
@@ -26,9 +27,16 @@ Trellino.Routers.AppRouter = Backbone.Router.extend({
   },
 
   newBoard: function(){
-    console.log('in da newboard route')
     var newBoardView = new Trellino.Views.NewBoardView({});
+    console.log("in the router, getting a new board")
     this._swapView(newBoardView);
+  },
+
+  showBoard: function(id) {
+    console.log('about to fetch: ' + id)
+    var board = Trellino.boards.getOrFetch(id);
+    var showBoardView = new Trellino.Views.BoardShowView({ model: board });
+    this._swapView(showBoardView);
   },
 
   _swapView: function(newView){

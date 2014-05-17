@@ -7,7 +7,7 @@ window.Trellino = {
 
     Trellino.boards = new Trellino.Collections.Boards();
 
-    new Trellino.Routers.AppRouter({
+    Trellino.router = new Trellino.Routers.AppRouter({
       '$rootEl': $('#content')
     });
     Backbone.history.start();
