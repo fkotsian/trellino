@@ -1,5 +1,9 @@
-Trellino.Views.NewBoardView = Backbone.View.extend({
+Trellino.Views.BoardNewView = Backbone.View.extend({
   template: JST['boards/new_board'],
+
+  initialize: function() {
+
+  },
 
   events: {
     'click input#board-create-button': 'handleForm'
@@ -8,7 +12,6 @@ Trellino.Views.NewBoardView = Backbone.View.extend({
   handleForm: function(event) {
     event.preventDefault();
     var formData = $(event.target).parent().serializeJSON();
-    console.log(formData);
 
     Trellino.boards.create(formData, {
       success: function(resp) {
@@ -28,5 +31,5 @@ Trellino.Views.NewBoardView = Backbone.View.extend({
     return this;
   },
 
-  initialize: function() {}
+
 })

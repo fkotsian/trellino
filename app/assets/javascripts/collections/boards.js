@@ -15,7 +15,8 @@ Trellino.Collections.Boards = Backbone.Collection.extend({
 
     return board;
   },
+
   initialize: function(){
 
-  }
+  },
 });

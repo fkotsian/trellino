@@ -1,15 +1,15 @@
 Trellino.Collections.Lists = Backbone.Collection.extend({
   model: Trellino.Models.List,
-  url: 'api/boards/:board_id/lists',
-
-  tagName: 'ul',
-  className: 'board-list',
-  attributes: {
-    // 'board-id': this.board.get('id')
+  url: function() {
+    console.log('getting URL in collection')
+    return this.board.url() + '/lists'
   },
 
   comparator: function sortBy(model) {
     return model.rank;
   },
 
+  initialize: function(models, options) {
+    this.board = options.board;
+  }
 })

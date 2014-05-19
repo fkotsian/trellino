@@ -27,14 +27,14 @@ Trellino.Routers.AppRouter = Backbone.Router.extend({
   },
 
   newBoard: function(){
-    var newBoardView = new Trellino.Views.NewBoardView({});
+    var newBoardView = new Trellino.Views.BoardNewView({});
     console.log("in the router, getting a new board")
     this._swapView(newBoardView);
   },
 
   showBoard: function(id) {
-    console.log('about to fetch: ' + id)
     var board = Trellino.boards.getOrFetch(id);
+    console.log('routing to show board')
     var showBoardView = new Trellino.Views.BoardShowView({ model: board });
     this._swapView(showBoardView);
   },

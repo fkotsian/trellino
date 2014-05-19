@@ -12,6 +12,9 @@ module Api
 
     def create
       @list = List.new(list_params)
+      max_rank = List.where({ board_id: @list.board_id }).maximum('rank')
+      @list.rank = max_rank + 1
+
       if @list.save
         render partial: "api/lists/list", locals: { list: @list }
       else

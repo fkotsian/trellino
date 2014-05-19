@@ -1,1 +1,10 @@
-<h1>Create a New List on Your Board</h1>
+<form action="api/boards/<%= board.id %>/lists" method="POST" accept-charset="utf-8">
+
+  <input type="hidden" name="list[board_id]" value="<%= board.id %>" id="list_board_id">
+  <label>Title
+    <input type="text" name="list[title]" value="" id="list_title">
+  </label>
+
+  <button type='submit' class='submit-list'>Create New List</button>
+  <button class='cancel-new-list'>X</button>
+</form>

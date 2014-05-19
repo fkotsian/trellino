@@ -8,7 +8,7 @@ Trellino.Models.Board = Backbone.Model.extend({
 
   parse: function(json){
     if (json.lists) {
-      this.lists().set(json.lists);
+      this.lists().set(json.lists, { parse: true });
       delete json.lists;
     }
 

@@ -1,4 +1,4 @@
-Trellino.Views.ListView = Backbone.View.extend({
+Trellino.Views.ListShowView = Backbone.CompositeView.extend({
   template: JST['lists/list'],
 
   events: {},
@@ -16,7 +16,7 @@ Trellino.Views.ListView = Backbone.View.extend({
   },
 
   leave: function(){
-    this.subViews.forEach(function(subView){
+    this.subviews().forEach(function(subView){
       subView.leave();
     });
 
