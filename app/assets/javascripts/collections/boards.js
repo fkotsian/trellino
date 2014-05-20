@@ -16,7 +16,7 @@ Trellino.Collections.Boards = Backbone.Collection.extend({
     return board;
   },
 
-  initialize: function(){
+  initialize: function(models, options) {
 
   },
 });

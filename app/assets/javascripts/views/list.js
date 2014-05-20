@@ -4,6 +4,7 @@ Trellino.Views.ListShowView = Backbone.CompositeView.extend({
   events: {},
 
   tagName: 'li',
+  className: 'list',
   attributes: {
     // 'data-id': this.model.get('id')
   },

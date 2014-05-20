@@ -2,7 +2,7 @@ Trellino.Views.BoardsIndexView = Backbone.CompositeView.extend({
 
   template: JST['boards/index'],
   initialize: function() {
-    this.listenTo(this.collection, 'sync add remove', this.render);
+    this.listenTo(this.collection, 'sync add remove delete', this.render);
     // this.listenTo(this.collection.lists(), 'sync add remove', this.render);
 
     // this.collection.each(this.addBoard.bind(this));
@@ -33,6 +33,7 @@ Trellino.Views.BoardsIndexView = Backbone.CompositeView.extend({
     var indexContent = this.template();
     this.$el.html(indexContent);
     // this.attachSubviews();
+    console.log('rendering the index')
 
     var that = this;
     this.collection.each(function(board){
