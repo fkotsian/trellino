@@ -24,6 +24,15 @@ Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     console.log('adding list to lists()')
     var listShow = new Trellino.Views.ListShowView({ model: list });
     this.addSubview('.lists', listShow.render());
+
+    var view = this;
+    // list.cards().each(view.addCard.bind(view));
+  },
+
+  addCard: function(card) {
+    console.log('adding card from cards() to view');
+    var cardShow = new Trellino.Views.CardShowView({ model: card })
+    this.addSubview('.cards', cardShow.render());
   },
 
   events: {
@@ -93,24 +102,31 @@ Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     event.preventDefault();
     var formData = $(event.target).parent().serializeJSON();
 
-    $.ajax({
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      url: this.model.url(),
-      type: 'PATCH',
-      data: formData,
-      success: function(response) {
-        console.log('Member patch successful');
-      },
-      error: function(response, errorThrown) {
-        console.log('Error: ' + errorThrown);
-      },
-      complete: function() {
-        console.log('Patch ran')
-      }
-    });
+    debugger
+    this.model.set('newMemberEmail', formData.params['newMemberEmail']);
+    this.model.save({},
+      success: ,
+      error:
+    );
+    // debugger
+    // $.ajax({
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   url: this.model.url(),
+    //   type: 'PATCH',
+    //   data: formData,
+      // success: function(response) {
+      //   console.log('Member patch successful');
+      // },
+      // error: function(response, errorThrown) {
+      //   console.log('Error: ' + errorThrown);
+      // },
+    //   complete: function() {
+    //     console.log('Patch ran')
+    //   }
+    // });
     //
     // this.model.members.push
     // Trellino.router.navigate('boards/' + this.model.id);
